@@ -2,31 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Recipe;
 use App\Step;
 use Illuminate\Http\Request;
 
 class StepController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,29 +16,17 @@ class StepController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $recipe = Recipe::find($request->input('recipe_id'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Step  $step
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Step $step)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Step  $step
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Step $step)
-    {
-        //
+        if (is_object($recipe) && $recipe->user_id == Auth::user()->id) {
+            $step = Step::create([
+                'recipe_id' => $request->input('recipe_id'),
+                'step' => $request->input('step'),
+                'description' => $request->input('description'),
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -69,7 +38,21 @@ class StepController extends Controller
      */
     public function update(Request $request, Step $step)
     {
-        //
+        $recipe = Recipe::find($request->input('recipe_id'));
+        $step = Step::find($request->input('id'));
+
+        if (
+            is_object($recipe) && is_object($step) &&
+            $recipe->user_id == Auth::user()->id
+        ) {
+            $step->update([
+                'recipe_id' => $request->input('recipe_id'),
+                'step' => $request->input('step'),
+                'description' => $request->input('description'),
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -80,6 +63,20 @@ class StepController extends Controller
      */
     public function destroy(Step $step)
     {
-        //
+        $recipe = Recipe::find($request->input('recipe_id'));
+        $step = Step::find($request->input('id'));
+
+        if (
+            is_object($recipe) && is_object($step) &&
+            $recipe->user_id == Auth::user()->id
+        ) {
+            $delete = $step->delete();
+            if ($delete) {
+                return redirect()->back()->with('success', ['Step was deleted successfully']);
+            }
+
+            return redirect()->back()->withErrors(['message', 'Step was not deleted successfully']);
+        }
+        abort(404);
     }
 }

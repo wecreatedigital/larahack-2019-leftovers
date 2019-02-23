@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Recipe\Recipe;
-use App\Recipe\Review;
+use App\Recipe;
+use App\Review;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -37,7 +37,7 @@ class ReviewController extends Controller
     public function update(Request $request, Review $review)
     {
         $recipe = Recipe::find($request->input('recipe_id'));
-        $review = Review::find($request->input('review_id'));
+        $review = Review::find($request->input('id'));
 
         if (
             is_object($recipe) && is_object($review) &&
@@ -62,13 +62,13 @@ class ReviewController extends Controller
     public function destroy(Review $review)
     {
         $recipe = Recipe::find($request->input('recipe_id'));
-        $review = Review::find($request->input('review_id'));
+        $review = Review::find($request->input('id'));
 
         if (
             is_object($recipe) && is_object($review) &&
             ($recipe->user_id == Auth::user()->id || $review->user_id == Auth::user()->id)
         ) {
-            $delete = Review::find($review)->delete();
+            $delete = $review->delete();
             if ($delete) {
                 return redirect()->back()->with('success', ['Review was deleted successfully']);
             }
