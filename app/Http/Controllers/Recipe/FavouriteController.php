@@ -8,26 +8,6 @@ use Illuminate\Http\Request;
 class FavouriteController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,41 +15,10 @@ class FavouriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Favourite  $favourite
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Favourite $favourite)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Favourite  $favourite
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Favourite $favourite)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Favourite  $favourite
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Favourite $favourite)
-    {
-        //
+        $favourite = Favourite::create([
+            'recipe_id' => $request->input('recipe_id'),
+            'user_id' => Auth::user()->id,
+        ]);
     }
 
     /**
@@ -80,6 +29,24 @@ class FavouriteController extends Controller
      */
     public function destroy(Favourite $favourite)
     {
-        //
+        $favourite = Favourite::find($request->input('id'));
+
+        if (
+            is_object($favourite) &&
+            $favourite->user_id == Auth::user()->id
+        ) {
+            $delete = $favourite->delete();
+            if ($delete) {
+                return redirect()->back()->with('success', [
+                    'Favourite was removed',
+                ]);
+            }
+
+            return redirect()->back()->withErrors([
+                'message',
+                'Favourite was not removed',
+            ]);
+        }
+        abort(404);
     }
 }
