@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/about', 'HomeController@index')->name('about');
 Route::get('/search/results', 'SearchController@getResults')->name('results');
 
 Route::group(['middlewareGroups' => ['web', 'auth']], function () {
@@ -34,7 +35,7 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
 
     //Recipes
     Route::get('/recipes', 'RecipeController@index');
-    Route::get('/recipes-add', 'RecipeController@create');
+    Route::get('/add-recipe', 'RecipeController@create')->name('add-recipe');
     Route::post('recipes-store', 'RecipeController@store');
     Route::get('/recipe/{id}/edit', 'RecipeController@edit');
     Route::post('/recipe/{id}/update', 'RecipeController@update');

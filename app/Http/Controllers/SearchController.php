@@ -19,9 +19,15 @@ class SearchController extends Controller
 
     public function getResults(Request $request)
     {
-        $recipes = Recipe::with('user')->whereHas('ingredients', function ($query) use ($request) {
-            $query->where('option_id', $request->input('ingredients'));
-        })->get();
+        $recipes = Recipe::with('user');
+
+        if (null !== $request->input('ingredients')) {
+            $recipes = $recipes->whereHas('ingredients', function ($query) use ($request) {
+                $query->where('option_id', $request->input('ingredients'));
+            });
+        }
+
+        $recipes = $recipes->get();
 
         $ingredients = Option::ingredients()->get();
 
