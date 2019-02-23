@@ -34,7 +34,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-10
+     * @date    2019-02-23
      */
     public function __construct()
     {
@@ -93,7 +93,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-03
+     * @date    2019-02-23
      * @param   Request    $request
      * @return  [type]
      */
@@ -154,7 +154,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-03
+     * @date    2019-02-23
      * @param   Request    $request
      * @return  [type]
      */
@@ -216,7 +216,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-03
+     * @date    2019-02-23
      * @param   Request    $request
      * @return  [type]
      */
@@ -282,7 +282,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-03
+     * @date    2019-02-23
      * @param   Request    $request
      * @return  [type]
      */
@@ -342,7 +342,7 @@ class SettingsController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-28
+     * @date    2019-02-23
      * @param   Request    $request
      * @return  [type]
      */

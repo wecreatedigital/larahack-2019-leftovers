@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTagsTable extends Migration
 {
@@ -15,7 +15,17 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
+        });
+
+        Schema::create('recipe_tag', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('recipe_id')->unsigned();
+            $table->foreign('recipe_id')->references('id')->on('recipes');
+
+            $table->integer('tag_id')->unsigned();
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
@@ -27,5 +37,6 @@ class CreateTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('recipe_tag');
     }
 }

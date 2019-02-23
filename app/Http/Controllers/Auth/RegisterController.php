@@ -62,7 +62,7 @@ class RegisterController extends Controller
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-10
+     * @date    2019-02-23
      * @param   array      $data
      * @return  [type]
      */

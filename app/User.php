@@ -45,4 +45,32 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * [recipes description]
+     * User hasMany Recipes
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function recipes()
+    {
+        return $this->hasMany('App\Recipe');
+    }
+
+    /**
+     * [reviews description]
+     * User hasMany Reviews
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
 }
