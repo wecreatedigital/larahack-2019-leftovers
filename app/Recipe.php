@@ -52,4 +52,24 @@ class Recipe extends Model
     {
         return $this->hasMany('App\Review', 'recipe_id');
     }
+
+    /**
+     * Get a list of ingredients associated with the recipe
+     * @author Dean Appleton-Claydon
+     * @date   2019-02-23
+     */
+    public function ingredients()
+    {
+        return $this->belongsToMany('App\Option', 'recipe_ingredients', 'recipe_id', 'option_id');
+    }
+
+    /**
+     * Get a list of utensils associated with the recipe
+     * @author Dean Appleton-Claydon
+     * @date   2019-02-23
+     */
+    public function utensils()
+    {
+        return $this->belongsToMany('App\Option', 'recipe_utensils', 'recipe_id', 'option_id');
+    }
 }
