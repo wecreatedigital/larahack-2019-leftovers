@@ -31,6 +31,14 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
     Route::post('/update-contact-settings', 'Auth\SettingsController@updateContactSettings')->name('updateContactSettings');
     Route::post('/update-security-settings', 'Auth\SettingsController@updateSecuritySettings')->name('updateSecuritySettings');
     Route::post('/update-avatar-settings', 'Auth\SettingsController@updateAvatarSettings')->name('updateAvatarSettings');
+
+    //Recipes
+    Route::get('/recipes', 'RecipeController@index');
+    Route::get('/recipes-add', 'RecipeController@create');
+    Route::post('recipes-store', 'RecipeController@store');
+    Route::get('/recipe-show', 'RecipeController@show');
+    Route::post('/recipe-update', 'RecipeController@update');
+    Route::delete('/recipe-delete', 'RecipeController@destroy');
 });
 
 Auth::routes();
