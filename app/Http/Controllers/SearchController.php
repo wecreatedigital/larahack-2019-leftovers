@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+class SearchController extends Controller
 {
     /**
      * Create a new controller instance.

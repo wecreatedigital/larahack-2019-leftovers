@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/search/results', 'SearchController@getResults')->name('results');
 
 Route::group(['middlewareGroups' => ['web', 'auth']], function () {
 
