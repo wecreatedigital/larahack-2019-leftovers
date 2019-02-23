@@ -13,7 +13,7 @@
           <div class="col-md-12">
             <label for="profilePhoto">Select new profile photo:</label>
             <div class="custom-file p-0">
-              <input id="new-profile-photo-input" type="file" class="custom-file-input">
+              <input id="new-profile-photo-input" type="file" class="custom-file-input" required>
               <label for="profilePhoto" id="labelCustomPhoto" class="custom-file-label" style="padding-top: 6px;">Choose photo to upload...</label>
               <span class="invalid-feedback photo-invalid-feedback" role="alert" hidden>
                   <strong></strong>

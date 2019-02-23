@@ -317,6 +317,8 @@ $( document ).ready(function() {
       // Let User know they have selected a file
       let fileName = $(this).val().split('\\').pop();
       $(this).next('.custom-file-label').addClass("selected").html(fileName);
+      $('#new-profile-photo-input').removeClass('is-valid').removeClass('is-invalid');
+      isNotValid($('.photo-invalid-feedback'), '');
 
       // Move File for User to crop
       var reader = new FileReader();
@@ -332,6 +334,14 @@ $( document ).ready(function() {
 
     // Upload Cropped Image
     $('.upload-new-profile-photo').on('click', function (e) {
+
+      // Image is required message
+      if ( $('.custom-file-label').text() == 'Choose photo to upload...' ){
+        $('#new-profile-photo-input').removeClass('is-valid').addClass('is-invalid');
+        isNotValid($('.photo-invalid-feedback'), 'Please Choose an Image to Upload...');
+        return false;
+      }
+
       resize.croppie('result', {
         type: 'canvas',
         size: 'viewport'
@@ -355,11 +365,8 @@ $( document ).ready(function() {
             }  else {
               toastr.success('Updated Profile Settings!', 'Success Alert', {timeOut: 5000});
 
-              // Update Settings Profile Photo Preview
-              $('.profile-photo-preview').css('background-image', 'url("'+data.avatar+'")');
-
               // Update Navbar Profile Photo
-              $('.spark-nav-profile-photo').attr('src', data.avatar)
+              $('.dropdown-toggle-avatar').attr('src', data.avatar)
 
               $('#new-profile-photo-input').removeClass('is-invalid').addClass('is-valid');
               isValid(('.photo-invalid-feedback'));

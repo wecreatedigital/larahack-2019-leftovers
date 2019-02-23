@@ -8,10 +8,9 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'components/global'; // Global SCSS
 @import "components/profile-photo"; // Croppie Profile Photo SCSS
 @import "components/toastr"; // Toastr Notifications
-
-
 
 .navbar-laravel {
   background-color: #fff;

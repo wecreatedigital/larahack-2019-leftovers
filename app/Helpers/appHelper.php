@@ -11,7 +11,7 @@ class AppHelper
      * [ago description]
      * Time ago format
      *
-     * @author  Christopher Kelker
+     * @author  Dean Appleton-Clayton
      * @version 1.0.0
      * @date    2019-02-23
      * @param   [type]     $time

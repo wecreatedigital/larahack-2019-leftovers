@@ -357,12 +357,13 @@ class SettingsController extends Controller
         list($type, $image) = explode(';', $image);
         list(, $image) = explode(',', $image);
         $image = base64_decode($image);
-        $path = public_path('storage/profiles/'.$user->id.'_'.time().'.png');
+        $imageName = $user->id.'_'.time().'.png';
+        $path = public_path('storage/profiles/'.$imageName);
         file_put_contents($path, $image);
 
         // Return Image URL
         $disk = Storage::disk('public');
-        $url = $disk->url('profiles/'.$user->id.'_'.time().'.png');
+        $url = 'storage/profiles/'.$imageName;
 
         // Next, we'll update this URL on the local user instance and save it to the DB
         // so we can access it later. Then we will delete the old photo from storage
