@@ -2,30 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Review;
+use App\Recipe\Recipe;
+use App\Recipe\Review;
+use Auth;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,29 +18,13 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Review $review)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Review  $review
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Review $review)
-    {
-        //
+        $review = Review::create([
+            'recipe_id' => $request->input('recipe_id'),
+            'user_id' => Auth::user()->id,
+            'rating' => $request->input('rating'),
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+        ]);
     }
 
     /**
@@ -69,7 +36,21 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $recipe = Recipe::find($request->input('recipe_id'));
+        $review = Review::find($request->input('review_id'));
+
+        if (
+            is_object($recipe) && is_object($review) &&
+            ($recipe->user_id == Auth::user()->id || $review->user_id == Auth::user()->id)
+        ) {
+            $review->update([
+                'rating' => $request->input('rating'),
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -80,6 +61,20 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $recipe = Recipe::find($request->input('recipe_id'));
+        $review = Review::find($request->input('review_id'));
+
+        if (
+            is_object($recipe) && is_object($review) &&
+            ($recipe->user_id == Auth::user()->id || $review->user_id == Auth::user()->id)
+        ) {
+            $delete = Review::find($review)->delete();
+            if ($delete) {
+                return redirect()->back()->with('success', ['Review was deleted successfully']);
+            }
+
+            return redirect()->back()->withErrors(['message', 'Review was not deleted successfully']);
+        }
+        abort(404);
     }
 }
