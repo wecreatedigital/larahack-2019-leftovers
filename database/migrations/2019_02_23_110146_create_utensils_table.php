@@ -17,7 +17,8 @@ class CreateUtensilsTable extends Migration
             $table->increments('id');
             $table->integer('recipe_id')->unsigned();
             $table->foreign('recipe_id')->references('id')->on('recipes');
-            $table->string('utensil');
+            $table->integer('option_id')->unsigned();
+            $table->foreign('option_id')->references('id')->on('options');
             $table->timestamps();
         });
     }
