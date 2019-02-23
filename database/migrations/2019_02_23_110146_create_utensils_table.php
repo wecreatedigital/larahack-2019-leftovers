@@ -15,8 +15,8 @@ class CreateUtensilsTable extends Migration
     {
         Schema::create('utensils', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('recipie_id')->unsigned();
-            $table->foreign('recipie_id')->references('id')->on('recipes');
+            $table->integer('recipe_id')->unsigned();
+            $table->foreign('recipe_id')->references('id')->on('recipes');
             $table->string('utensil');
             $table->timestamps();
         });

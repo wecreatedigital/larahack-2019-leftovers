@@ -8,5 +8,5 @@ class Step extends Model
 {
     protected $table = 'steps';
 
-    protected $fillable = ['recipie', 'step', 'description'];
+    protected $fillable = ['recipe_id', 'step', 'description'];
 }

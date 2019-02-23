@@ -8,5 +8,5 @@ class Utensil extends Model
 {
     protected $table = 'utensils';
 
-    protected $fillable = ['recipie_id', 'step', 'description'];
+    protected $fillable = ['recipe_id', 'step', 'description'];
 }
