@@ -88,8 +88,10 @@ class Recipe extends Model
         $array = $this->reviews()->pluck('rating')->toArray();
 
         //Calculate the average.
-        $average = round(array_sum($array) / count($array));
+        if (count($array) > 0) {
+            return round(array_sum($array) / count($array));
+        }
 
-        return $average;
+        return null;
     }
 }
