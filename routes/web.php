@@ -36,11 +36,11 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
     //Recipes
     Route::get('/recipes', 'RecipeController@index');
     Route::get('/add-recipe', 'RecipeController@create')->name('add-recipe');
-    Route::post('recipes-store', 'RecipeController@store');
+    Route::post('/recipes-store', 'RecipeController@store');
     Route::get('/recipe/{id}/edit', 'RecipeController@edit');
     Route::post('/recipe/{id}/update', 'RecipeController@update');
     Route::get('/recipe/{id}/delete', 'RecipeController@destroy');
-    Route::get('/recipe/{id}/view', 'RecipeController@show');
+    Route::get('/recipe/{slug}', 'RecipeController@show');
 });
 
 Auth::routes();

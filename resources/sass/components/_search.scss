@@ -1,0 +1,47 @@
+.container-search {
+
+    h1 {
+        color: #fff;
+    }
+
+    #make-search {
+        label {
+            font-size: 18px;
+        }
+    }
+
+    .card {
+        border: 0 none;
+
+        .card-title {
+            color: $green;
+            font-weight: 600;
+            font-size: 21px;
+        }
+
+        .card-body {
+
+            .stars i {
+                color: $green;
+            }
+
+        }
+
+        .card-footer {
+            border: 0 none;
+            background: transparent;
+            padding-top: 0;
+
+            a {
+                color: #000;
+                text-decoration: underline;
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+        }
+
+    }
+
+}

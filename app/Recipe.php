@@ -94,4 +94,9 @@ class Recipe extends Model
 
         return null;
     }
+
+    public function getSlug()
+    {
+        return url('/recipe/'.$this->slug);
+    }
 }
