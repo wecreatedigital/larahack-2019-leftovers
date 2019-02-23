@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Option;
+
 class HomeController extends Controller
 {
     /**
@@ -20,6 +22,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ingredients = Option::ingredients()->get();
+
+        return view('home', [
+            'ingredients' => $ingredients,
+        ]);
     }
 }

@@ -11,9 +11,9 @@
                         <label for="ingredients" class="sr-only">Ingredients</label>
                         <select name="ingredients[]" multiple="multiple" class="form-control-plaintext tags-ingredients" id="ingredients">
                             <option>Search ingredients in your cupboard...</option>
-                            <option>Cheese</option>
-                            <option>Bacon</option>
-                            <option>Radish</option>
+                            @foreach($ingredients as $ingredient)
+                                <option value="{{{ $ingredient->id }}}">{{{ $ingredient->value }}}</option>
+                            @endforeach
                         </select>
                         <button type="submit" class="btn btn-primary ml-3">Find receipes</button>
                       </div>
