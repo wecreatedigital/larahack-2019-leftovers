@@ -1,3 +1,11 @@
+body {
+    background-color:
+    rgba(0, 0, 0, 0.30);
+    background-image: url(https://source.unsplash.com/1600x900/?recipes,food);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-blend-mode: overlay;
+}
 .dropdown-toggle-avatar {
     object-fit: cover;
     margin: 0;
@@ -15,4 +23,40 @@
   width: 150px;
   border-radius: 100%;
   margin-right: 0;
+}
+
+//Buttons
+.btn-primary {
+    background-color:$orange;
+    color:$white;
+    border:0;
+    &:hover {
+        background-color:$dark-orange;
+    }
+}
+
+.btn-secondary {
+    background-color:$orange;
+    color:$white;
+    border:0;
+    &:hover {
+        background-color:$dark-orange;
+    }
+}
+
+.jumbotron {
+    background-color:transparent;
+}
+
+//Global Form stylesheet
+.select2-container--default .select2-selection__choice {
+    background-color:$green !important;
+    color:$white !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove  {
+    color:$white !important;
+    &:hover {
+        color:$black !important;
+    }
 }

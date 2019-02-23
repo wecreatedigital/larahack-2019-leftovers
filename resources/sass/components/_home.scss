@@ -1,0 +1,21 @@
+//Transparent card Class to hide background Colors
+.card.transparent {
+    background-color:transparent !important;
+    color:#fff;
+    border:0 !important;
+
+    .home-title {
+        font-size:50px;
+        text-align: center;
+        font-weight:400;
+        color:$white;
+        margin:200px 0 0 0;
+    }
+
+}
+
+.form {
+    .tags-ingredients {
+        padding: 100px;
+    }
+}

@@ -4,7 +4,8 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card transparent">
+                <h1 class="home-title">Find recipes with whats leftover</h1>
                 <div class="card-body">
                     <form class="form-inline row" action="/search/results" method="get">
                       <div class="col-12 input-group">
