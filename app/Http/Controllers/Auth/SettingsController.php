@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
+use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -359,6 +360,7 @@ class SettingsController extends Controller
         $image = base64_decode($image);
         $imageName = $user->id.'_'.time().'.png';
         $path = public_path('storage/profiles/'.$imageName);
+        File::makeDirectory(public_path('storage/profiles/'), 0755, true, true);
         file_put_contents($path, $image);
 
         // Return Image URL
