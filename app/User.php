@@ -71,7 +71,7 @@ class User extends Authenticatable
      */
     public function favouriteRecipes()
     {
-        return $this->hasMany('App\Favourites', 'user_id');
+        return $this->hasMany('App\Favourite', 'user_id');
     }
 
     /**
@@ -91,5 +91,28 @@ class User extends Authenticatable
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    /**
+     * [allRecipeTags description]
+     * New array of User Tags from their Recipes
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function allRecipeTags()
+    {
+        $tags = [];
+
+        // Foreach User Recipe Tags
+        foreach ($this->recipes as $key => $recipe) {
+
+            // Make into new Array
+            $tags = $recipe->tags->pluck('id')->toArray();
+        }
+
+        return Tag::whereIn('id', $tags)->get();
     }
 }

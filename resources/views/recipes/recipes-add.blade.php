@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="container">
-    {!! Form::open(['url'=>'/recipe']) !!}
+    {!! Form::open(['url'=>'/recipes-store']) !!}
     {!! Form::label('recipe_title','title')!!}
     {!! Form::text('title') !!}
 
@@ -11,22 +11,22 @@
 
     {!! Form::label('recipe_difficulty', 'Difficulty') !!}
     {!! Form::label('recipe_beginner', 'Beginner')!!}
-    {!! Form::radio('beginner', 'Beginner')!!}
+    {!! Form::radio('difficulty', 'Beginner')!!}
 
     {!! Form::label('recipe_intermediate', 'Intermediate')!!}
-    {!! Form::radio('intermediate', 'Intermediate')!!}
+    {!! Form::radio('difficulty', 'Intermediate')!!}
 
     {!! Form::label('recipe_advanced', 'Advanced')!!}
-    {!! Form::radio('advanced', 'Advanced')!!}
+    {!! Form::radio('difficulty', 'Advanced')!!}
 
     {!! Form::label('recipe_servings', 'Servings')!!}
     {!! Form::number('servings')!!}
 
     {!! Form::label('recipe_prep_time') !!}
-    {!! Form::time('time', null)!!}
+    {!! Form::time('prep_time', null)!!}
 
     {!! Form::label('recipe_cook_time') !!}
-    {!! Form::time('time', null)!!}
+    {!! Form::time('cook_time', null)!!}
 
     {!! Form::label('recipe_image') !!}
     {!! Form::file('recipe_image') !!}

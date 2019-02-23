@@ -19,9 +19,10 @@ class CreateRecipesTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('prep_time')->nullable();
-            $table->string('cook_time');
-            $table->integer('servings')->unsigned();
-            $table->string('difficulty');
+            $table->string('cook_time')->nullable();
+            $table->integer('servings')->unsigned()->nullable();
+            $table->string('difficulty')->nullable();
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }
