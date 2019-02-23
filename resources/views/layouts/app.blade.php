@@ -67,10 +67,13 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" href="/profile"><i class="fas fa-user w-15"></i> Profile</a>
+                  <a class="dropdown-item" href="/settings"><i class="fas fa-cog w-15"></i> Account Settings</a>
                   <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
-                  {{ __('Logout') }}
+                  <i class="fas fa-power-off w-15"></i> {{ __('Logout') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
