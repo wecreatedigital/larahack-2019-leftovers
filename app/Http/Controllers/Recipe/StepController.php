@@ -72,10 +72,15 @@ class StepController extends Controller
         ) {
             $delete = $step->delete();
             if ($delete) {
-                return redirect()->back()->with('success', ['Step was deleted successfully']);
+                return redirect()->back()->with('success', [
+                    'Step was deleted successfully',
+                ]);
             }
 
-            return redirect()->back()->withErrors(['message', 'Step was not deleted successfully']);
+            return redirect()->back()->withErrors([
+                'message',
+                'Step was not deleted successfully',
+            ]);
         }
         abort(404);
     }

@@ -70,10 +70,15 @@ class ReviewController extends Controller
         ) {
             $delete = $review->delete();
             if ($delete) {
-                return redirect()->back()->with('success', ['Review was deleted successfully']);
+                return redirect()->back()->with('success', [
+                    'Review was deleted successfully',
+                ]);
             }
 
-            return redirect()->back()->withErrors(['message', 'Review was not deleted successfully']);
+            return redirect()->back()->withErrors([
+                'message',
+                'Review was not deleted successfully',
+            ]);
         }
         abort(404);
     }
