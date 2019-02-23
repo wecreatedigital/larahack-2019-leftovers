@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use AppHelper;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -79,7 +80,7 @@ class RecipeController extends Controller
             'cook_time' => $request->input('cook_time'),
             'servings' => $request->input('servings'),
             'difficulty' => $request->input('difficulty'),
-            'slug' => str_slug($request->input('title')),
+            'slug' => AppHelper::createSlug($request->input('title')),
         ]);
 
         return redirect('/recipes')->with('message', 'Successfully created Recipe!');
@@ -91,9 +92,9 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $recipe = Recipe::find($id);
+        $recipe = Recipe::where('slug', $slug)->first();
 
         return View::make('recipes.recipe-view', [
             'recipe' => $recipe,
@@ -160,7 +161,7 @@ class RecipeController extends Controller
             'cook_time' => $request->input('cook_time'),
             'servings' => $request->input('servings'),
             'difficulty' => $request->input('difficulty'),
-            'slug' => str_slug($request->input('title')),
+            'slug' => AppHelper::createSlug($request->input('title')),
         ]);
 
         return redirect('/recipes')->with('message', 'Successfully updated Recipe!');

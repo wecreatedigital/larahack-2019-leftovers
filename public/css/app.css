@@ -11347,6 +11347,10 @@ body {
   background-color: transparent;
 }
 
+.card {
+  border: 0 none;
+}
+
 .select2-container--default .select2-selection__choice {
   background-color: #98B247 !important;
   color: #fff !important;
@@ -11891,14 +11895,11 @@ button.toast-close-button {
 
 .container-search h1 {
   color: #fff;
+  font-size: 28px;
 }
 
 .container-search #make-search label {
-  font-size: 18px;
-}
-
-.container-search .card {
-  border: 0 none;
+  font-size: 19px;
 }
 
 .container-search .card .card-title {
@@ -11924,6 +11925,12 @@ button.toast-close-button {
 
 .container-search .card .card-footer a:hover {
   text-decoration: none;
+}
+
+.navbar .mr-auto li a.nav-link {
+  color: #000;
+  padding-right: 0.7rem;
+  padding-left: 0.7rem;
 }
 
 .navbar-laravel {
