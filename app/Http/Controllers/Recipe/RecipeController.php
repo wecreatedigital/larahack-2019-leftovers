@@ -43,14 +43,12 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-
         // Validation Rules
         $rules = array(
             'title' => 'nullable|string|max:15',
             'description' => 'nullable|string|different:title',
             'time' => 'nullable|string|max:30',
         );
-
         // Validation Messages
         $messages = array(
 
@@ -77,10 +75,14 @@ class RecipeController extends Controller
             'user_id' => Auth::user()->id,
             'title' => $request->input('title'),
             'description' => $request->input('description'),
-            'time' => $request->input('time'),
+            'prep_time' => $request->input('prep_time'),
+            'cook_time' => $request->input('cook_time'),
+            'servings' => $request->input('servings'),
+            'difficulty' => $request->input('difficulty'),
+            'slug' => str_slug($request->input('title')),
         ]);
 
-        return redirect()->back()->with('message', 'Successfully created Recipe!');
+        return redirect('/recipes')->with('message', 'Successfully created Recipe!');
     }
 
     /**
@@ -89,8 +91,13 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Recipe $recipe)
+    public function show($id)
     {
+        $recipe = Recipe::find($id);
+
+        return View::make('recipes.recipe-view', [
+            'recipe' => $recipe,
+        ]);
     }
 
     /**
@@ -99,8 +106,13 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recipe $recipe)
+    public function edit($id)
     {
+        $recipe = Recipe::find($id);
+
+        return View::make('recipes.recipes-edit', [
+            'recipe' => $recipe,
+        ]);
     }
 
     /**
@@ -110,8 +122,48 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recipe $recipe)
+    public function update(Request $request, $id)
     {
+        $user = Auth::user();
+        // Validation Rules
+        $rules = array(
+            'title' => 'nullable|string|max:15',
+            'description' => 'nullable|string|different:title',
+            'time' => 'nullable|string|max:30',
+        );
+        // Validation Messages
+        $messages = array(
+
+            // Title validation messages
+            'title.required' => 'Title is required!',
+
+            // Description validation messages
+            'description.required' => 'Description is required!',
+
+            // Time validation messages
+            'time.required' => 'Time is required!',
+        );
+
+        // Validate Request against rules
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // If Validation fails
+        if ($validator->fails()) {
+            return response()->back(array('errors' => $validator->getMessageBag()->toArray()));
+        }
+
+        $review = Recipe::where('id', $id)->update([
+            'user_id' => Auth::user()->id,
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'prep_time' => $request->input('prep_time'),
+            'cook_time' => $request->input('cook_time'),
+            'servings' => $request->input('servings'),
+            'difficulty' => $request->input('difficulty'),
+            'slug' => str_slug($request->input('title')),
+        ]);
+
+        return redirect('/recipes')->with('message', 'Successfully updated Recipe!');
     }
 
     /**
@@ -120,7 +172,11 @@ class RecipeController extends Controller
      * @param  \App\Recipe  $recipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recipe $recipe)
+    public function destroy($id)
     {
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+
+        return redirect('/recipes')->with('message', 'Successfully deleted Recipe!');
     }
 }

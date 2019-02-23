@@ -8,7 +8,7 @@ class Recipe extends Model
 {
     protected $table = 'recipes';
 
-    protected $fillable = ['user_id', 'title', 'description', 'time'];
+    protected $fillable = ['user_id', 'title', 'description', 'prep_time', 'cook_time', 'servings', 'difficulty', 'slug'];
 
     /**
      * [tags description]
