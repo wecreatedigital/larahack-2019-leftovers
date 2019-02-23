@@ -12,9 +12,30 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
+});
+
+Route::group(['middlewareGroups' => ['web', 'auth']], function () {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Profile Settings
+    |--------------------------------------------------------------------------
+    |
+    */
+    Route::get('/profile', 'UserController@profile')->name('profile');
+    Route::get('/settings', 'ProfileController@settings')->name('settings');
+
+    // Profile functionality
+    Route::post('/update-profile-settings', 'Auth\SettingsController@updateProfileSettings')->name('updateProfileSettings');
+    Route::post('/update-basic-settings', 'Auth\SettingsController@updateBasicSettings')->name('updateBasicSettings');
+    Route::post('/update-contact-settings', 'Auth\SettingsController@updateContactSettings')->name('updateContactSettings');
+    Route::post('/update-security-settings', 'Auth\SettingsController@updateSecuritySettings')->name('updateSecuritySettings');
+    Route::post('/update-avatar-settings', 'Auth\SettingsController@updateAvatarSettings')->name('updateAvatarSettings');
+
+    // Image Functionality
+    Route::get('crop-image', 'ImageController@index')->name('getImageUpload');
+    Route::post('crop-image', 'ImageController@uploadImage')->name('postImageUpload');
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
