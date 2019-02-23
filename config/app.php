@@ -230,7 +230,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'appHelper' => App\Helpers\appHelper::class,
+        'AppHelper' => App\Helpers\AppHelper::class,
     ],
 
 ];

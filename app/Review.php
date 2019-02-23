@@ -29,4 +29,18 @@ class Review extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    /**
+     * [recipe description]
+     * Reviews belongsTo a Recipe
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function recipe()
+    {
+        return $this->belongsTo('App\Recipe', 'recipe_id');
+    }
 }

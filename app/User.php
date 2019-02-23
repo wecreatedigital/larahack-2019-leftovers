@@ -61,6 +61,20 @@ class User extends Authenticatable
     }
 
     /**
+     * [favouriteRecipes description]
+     * User hasMany Favourite Recipes
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function favouriteRecipes()
+    {
+        return $this->hasMany('App\Favourites', 'user_id');
+    }
+
+    /**
      * [reviews description]
      * User hasMany Reviews
      *

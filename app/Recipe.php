@@ -38,4 +38,18 @@ class Recipe extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    /**
+     * [reviews description]
+     * Recipes hasMany a Reviews
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function reviews()
+    {
+        return $this->hasMany('App\Review', 'recipe_id');
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App;
+use Auth;
 use Request;
 
 class AppHelper
@@ -90,5 +91,23 @@ class AppHelper
     public static function setActive($path)
     {
         return Request::is($path.'*') ? 'active__route' : '';
+    }
+
+    /**
+     * [fullname description]
+     * Get User fullname
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @param   [type]     $path
+     */
+    public static function fullname($user = null)
+    {
+        if ($user == null) {
+            return $fullname = Auth::user()->firstname.' '.Auth::user()->lastname;
+        }
+
+        return $fullname = $user->firstname.' '.$user->lastname;
     }
 }
