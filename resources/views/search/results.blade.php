@@ -9,7 +9,7 @@
                     <a href="#" class="btn btn-block btn-primary">View Recipe</a>
                 </div>
                 <div class="card-footer">
-                    <img class="card-img-top" src="{{{ $recipe->user->avatar }}}" alt="{{{ $recipe->user->username }}}"> <a href="/profile/{{{ $recipe->user->username }}}">More by: {{{ $recipe->user->username }}}</a>
+                    <img class="rounded-circle" width="40" src="{{{ url($recipe->user->avatar) }}}" alt="{{{ $recipe->user->username }}}"> <a href="/profile/{{{ $recipe->user->username }}}">More by: {{{ $recipe->user->username }}}</a>
                 </div>
             </div>
         </div>
