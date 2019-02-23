@@ -61,7 +61,7 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <button type="submit" class="btn btn-purple float-right">{{__('Update')}}</button>
+          <button type="submit" class="btn btn-primary float-right">{{__('Update')}}</button>
         </div>
       </div>
     </form>

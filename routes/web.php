@@ -32,10 +32,6 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
     Route::post('/update-contact-settings', 'Auth\SettingsController@updateContactSettings')->name('updateContactSettings');
     Route::post('/update-security-settings', 'Auth\SettingsController@updateSecuritySettings')->name('updateSecuritySettings');
     Route::post('/update-avatar-settings', 'Auth\SettingsController@updateAvatarSettings')->name('updateAvatarSettings');
-
-    // Image Functionality
-    Route::get('crop-image', 'ImageController@index')->name('getImageUpload');
-    Route::post('crop-image', 'ImageController@uploadImage')->name('postImageUpload');
 });
 
 Auth::routes();

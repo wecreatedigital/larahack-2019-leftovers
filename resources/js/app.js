@@ -7,6 +7,11 @@
 
 require('./bootstrap');
 
+require('./components/croppie'); // Croppie JS
+// require('./components/toastr'); // Toastr JS
+
+require('./components/settings-funtionality.js'); // Profile Settings JS
+
 window.Vue = require('vue');
 
 /**

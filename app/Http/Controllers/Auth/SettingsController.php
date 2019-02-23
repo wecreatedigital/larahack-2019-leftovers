@@ -7,6 +7,7 @@ use App\User;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class SettingsController extends Controller
@@ -333,48 +334,52 @@ class SettingsController extends Controller
 
     /**
      * [updateAvatarSettings description]
-     * Write Description here...
+     * Update the current User's Profile Photo using the Croppie plugin.
+     *
+     * See the following:
+     * -- https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.js
+     * -- https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.3/croppie.min.css
      *
      * @author  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-01-04
+     * @date    2019-01-28
      * @param   Request    $request
      * @return  [type]
      */
     public function updateAvatarSettings(Request $request)
     {
-        // $request->validate([
-        //     'avatar' => 'nullable|max:10000|image|mimes:jpeg,jpg,png',
-        // ]);
+        // Variables
+        $user = Auth::user();
+        $image = $request->image;
+        $oldPhotoUrl = $user->avatar;
 
-        // $image = $request->avatar;
-        // list($type, $image) = explode(';', $image);
-        // list(, $image) = explode(',', $image);
-        // $image = base64_decode($image);
-        // $image_name = time().'.png';
-        // $path = public_path('storage/images/avatars/'.$image_name);
-        // file_put_contents($path, $image);
+        // Store new Image
+        list($type, $image) = explode(';', $image);
+        list(, $image) = explode(',', $image);
+        $image = base64_decode($image);
+        $path = public_path('storage/profiles/'.$user->id.'_'.time().'.png');
+        file_put_contents($path, $image);
 
-        // If Request has File
-        if ($request->hasFile('avatar')) {
-            $filename_with_extension = $request->file('avatar')->getClientOriginalName();
-            $filename = pathinfo($filename_with_extension, PATHINFO_FILENAME);
-            $extension = $request->file('avatar')->getClientOriginalExtension();
-            $test = $request->file('avatar')->extension();
-            $filename_to_store = $filename.'_'.date('Y-m-d_H-i-s').'.'.$extension;
-            $path = $request->file('avatar')->storeAs('public/images/avatars', $filename_to_store);
-            $filename_to_store = 'storage/images/avatars/'.$filename_to_store;
+        // Return Image URL
+        $disk = Storage::disk('public');
+        $url = $disk->url('profiles/'.$user->id.'_'.time().'.png');
 
-        // Else store avatar as default
-        } else {
-            $filename_to_store = 'storage/images/avatars/noavatar.jpg';
+        // Next, we'll update this URL on the local user instance and save it to the DB
+        // so we can access it later. Then we will delete the old photo from storage
+        // since we'll no longer need to access it for this specific user profile.
+        $user->forceFill([
+            'avatar' => $url,
+        ])->save();
+
+        // Now that the new Profile Photo has been stored we can go forward and
+        // delete the old Profile Photo. Using the existing old Photo URL,
+        // we can find the photo in the disk folder and delete it where the name
+        // matches.
+        if (preg_match('/profiles\/(.*)$/', $oldPhotoUrl, $matches)) {
+            $disk->delete('profiles/'.$matches[1]);
         }
 
-        $user = Auth::user();
-
-        $user->avatar = $filename_to_store;
-        $user->save();
-
-        return response()->json(['status' => true]);
+        // Return link to view new Photo
+        return response()->json(['status' => true, 'avatar' => $url]);
     }
 }

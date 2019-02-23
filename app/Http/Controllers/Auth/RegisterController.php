@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,24 +49,37 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:30'],
+            'lastname' => ['required', 'string', 'max:30', 'different:firstname'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * [create description]
+     * Create a new User with validation rules
      *
-     * @param  array  $data
-     * @return \App\User
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-01-10
+     * @param   array      $data
+     * @return  [type]
      */
     protected function create(array $data)
     {
+        // If somehow the randomly generated username exists, loop again...
+        do {
+            $username = substr(preg_replace('/[0-9]+/', '', strtolower($data['firstname'])).mt_rand(100, 1000000), 0, 20);
+        } while (User::where('username', $username)->count() > 0);
+
         return User::create([
-            'name' => $data['name'],
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'username' => $username,
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar' => 'storage/images/noavatar.jpg',
         ]);
     }
 }
