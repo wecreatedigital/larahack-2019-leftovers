@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use Auth;
 use Illuminate\Http\Request;
+use Validator;
 
 class RecipeController extends Controller
 {
@@ -14,7 +16,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        $recipes = $user->recipes;
+
+        return redirect('/')->back();
     }
 
     /**
@@ -24,7 +30,6 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -35,7 +40,45 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        // Validation Rules
+        $rules = array(
+            'title' => 'nullable|string|max:15',
+            'description' => 'nullable|string|different:title',
+            'time' => 'nullable|string|max:30',
+        );
+
+        // Validation Messages
+        $messages = array(
+
+            // Title validation messages
+            'title.required' => 'Title is required!',
+
+            // Description validation messages
+            'description.required' => 'Description is required!',
+
+            // Time validation messages
+            'time.required' => 'Time is required!',
+        );
+
+        // Validate Request against rules
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        // If Validation fails
+        if ($validator->fails()) {
+            return response()->back(array('errors' => $validator->getMessageBag()->toArray()));
+        }
+
+        // Create new Recipe
+        $review = Recipe::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'time' => $request->input('time'),
+        ]);
+
+        return redirect()->back()->with('message', 'Successfully created Recipe!');
     }
 
     /**
@@ -46,7 +89,6 @@ class RecipeController extends Controller
      */
     public function show(Recipe $recipe)
     {
-        //
     }
 
     /**
@@ -57,7 +99,6 @@ class RecipeController extends Controller
      */
     public function edit(Recipe $recipe)
     {
-        //
     }
 
     /**
@@ -69,7 +110,6 @@ class RecipeController extends Controller
      */
     public function update(Request $request, Recipe $recipe)
     {
-        //
     }
 
     /**
@@ -80,6 +120,5 @@ class RecipeController extends Controller
      */
     public function destroy(Recipe $recipe)
     {
-        //
     }
 }
