@@ -1,14 +1,5 @@
 $( document ).ready(function() {
 
-
-
-  console.log( "document ready!" );
-
-
-
-
-
-
   // On Update Profile Settings
   $(document).on('submit', '#update-profile-settings', function(e) {
     e.preventDefault();
@@ -393,7 +384,5 @@ $( document ).ready(function() {
     $(validation).removeAttr('hidden').removeClass('valid-feedback').addClass('invalid-feedback').css("display","block").text(text);
 
   }
-
-
 
 });
