@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Recipe;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Validator;
 
 class RecipeController extends Controller
@@ -16,11 +17,11 @@ class RecipeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $recipes = Recipe::all();
 
-        $recipes = $user->recipes;
-
-        return redirect('/')->back();
+        return View::make('recipes.recipes-index', [
+            'recipes' => $recipes,
+        ]);
     }
 
     /**
@@ -30,6 +31,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
+        return View::make('recipes.recipes-add');
     }
 
     /**
