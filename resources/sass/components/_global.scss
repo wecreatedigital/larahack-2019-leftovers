@@ -52,6 +52,11 @@ body {
     border: 0 none;
 }
 
+.add-recipe-card {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+}
+
 //Global Form stylesheet
 .select2-container--default .select2-selection__choice {
     background-color:$green !important;

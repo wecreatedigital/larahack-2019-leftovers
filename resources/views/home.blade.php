@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card transparent">
-                <h1 class="home-title">Find recipes with whats leftover</h1>
+                <h1 class="home-title">Find Recipes</h1>
+                <p class="text-center font-italic">Let us help you find a recipe with what you have leftover.</p>
                 <div class="card-body">
                     <form class="form-inline row" action="/search/results" method="get">
                       <div class="col-12 input-group">
