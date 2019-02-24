@@ -34,7 +34,7 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
     Route::post('/update-avatar-settings', 'Auth\SettingsController@updateAvatarSettings')->name('updateAvatarSettings');
 
     //Recipes
-    Route::get('/recipes', 'RecipeController@index');
+    Route::get('/my-recipes', 'RecipeController@index')->name('my-recipes');
     Route::get('/add-recipe', 'RecipeController@create')->name('add-recipe');
     Route::post('/recipes-store', 'RecipeController@store');
     Route::get('/recipe/{id}/edit', 'RecipeController@edit');

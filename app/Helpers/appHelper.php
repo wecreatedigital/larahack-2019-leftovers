@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App;
+use App\Recipe;
 use Auth;
 use Request;
 
@@ -118,7 +119,7 @@ class AppHelper
 
         // Get any that could possibly be related.
         // This cuts the queries down by doing it once.
-        $allSlugs = Post::select('slug')->where('slug', 'like', $slug.'%')
+        $allSlugs = Recipe::select('slug')->where('slug', 'like', $slug.'%')
                 ->where('id', '<>', $id)
                 ->get();
 
@@ -136,5 +137,41 @@ class AppHelper
         }
 
         throw new \Exception('Can not create a unique slug');
+    }
+
+    /**
+     * [unitTypes description]
+     * Return all unit types
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-24
+     * @return  [type]
+     */
+    public static function unitTypes()
+    {
+        return (object) [
+            'volume' => [
+                'teaspoon',
+                'tablespoon',
+                'ounce',
+                'gill',
+                'cup',
+                'pint',
+                'quart',
+                'gallon',
+                'ml',
+                'l',
+                'dl',
+            ],
+
+            'mass_and_weight' => [
+                'pound',
+                'ounce',
+                'mg',
+                'g',
+                'kg',
+            ],
+        ];
     }
 }

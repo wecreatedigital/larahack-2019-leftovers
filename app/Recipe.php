@@ -92,7 +92,7 @@ class Recipe extends Model
             return round(array_sum($array) / count($array));
         }
 
-        return null;
+        return 5;
     }
 
     public function getSlug()

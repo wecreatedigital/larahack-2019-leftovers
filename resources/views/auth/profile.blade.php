@@ -76,11 +76,12 @@
             <h3>{{__('My Recipes')}}</h3>
             @if ( count(Auth::user()->recipes) > 0 )
               @foreach (Auth::user()->recipes->take(3) as $key => $recipe)
-                <div class="row no-gutters">
-                  <div class="col-lg-4">
+                <div class="row no-gutters mb-3">
+                  <div class="col-sm-4 mr-3">
+                    <img class="img-fluid" src="https://source.unsplash.com/random/120x80">
                   </div>
-                  <div class="col-lg-8">
-                    <ul class="list-unstyled">
+                  <div class="col-sm-8 my-auto">
+                    <ul class="list-unstyled m-0">
                       <li>
                         <a href="/view/recipe/{{ $recipe->id }}">
                           {{ $recipe->title }}
@@ -101,7 +102,7 @@
               @endforeach
             @endif
 
-            <a href="recipes-add">
+            <a href="add-recipe">
               <button type="button" class="btn btn-primary btn-block" name="button">Add a Recipe</button>
             </a>
 

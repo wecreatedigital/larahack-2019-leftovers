@@ -46,21 +46,21 @@ class RecipeController extends Controller
         $user = Auth::user();
         // Validation Rules
         $rules = array(
-            'title' => 'nullable|string|max:15',
-            'description' => 'nullable|string|different:title',
-            'time' => 'nullable|string|max:30',
+            'recipe_title' => 'required|string|max:15',
+            'recipe_servings' => 'nullable',
+            'recipe_prep_time' => 'nullable|string',
+            'recipe_cook_time' => 'nullable|string',
+            'recipe_description' => 'required|string|different:recipe_title',
+            'recipe_difficulty' => 'nullable',
         );
         // Validation Messages
         $messages = array(
 
             // Title validation messages
-            'title.required' => 'Title is required!',
+            'recipe_title.required' => 'Recipe Title is required!',
 
             // Description validation messages
-            'description.required' => 'Description is required!',
-
-            // Time validation messages
-            'time.required' => 'Time is required!',
+            'recipe_description.required' => 'Recipe Description is required!',
         );
 
         // Validate Request against rules
@@ -74,16 +74,16 @@ class RecipeController extends Controller
         // Create new Recipe
         $review = Recipe::create([
             'user_id' => Auth::user()->id,
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'prep_time' => $request->input('prep_time'),
-            'cook_time' => $request->input('cook_time'),
-            'servings' => $request->input('servings'),
-            'difficulty' => $request->input('difficulty'),
-            'slug' => AppHelper::createSlug($request->input('title')),
+            'title' => $request->input('recipe_title'),
+            'description' => $request->input('recipe_description'),
+            'prep_time' => $request->input('recipe_prep_time'),
+            'cook_time' => $request->input('recipe_cook_time'),
+            'servings' => $request->input('recipe_servings'),
+            'difficulty' => $request->input('recipe_difficulty'),
+            'slug' => AppHelper::createSlug($request->input('recipe_title')),
         ]);
 
-        return redirect('/recipes')->with('message', 'Successfully created Recipe!');
+        return redirect('/my-recipes')->with('message', 'Successfully created Recipe!');
     }
 
     /**
@@ -164,7 +164,7 @@ class RecipeController extends Controller
             'slug' => AppHelper::createSlug($request->input('title')),
         ]);
 
-        return redirect('/recipes')->with('message', 'Successfully updated Recipe!');
+        return redirect('/my-recipes')->with('message', 'Successfully updated Recipe!');
     }
 
     /**
@@ -178,6 +178,6 @@ class RecipeController extends Controller
         $recipe = Recipe::find($id);
         $recipe->delete();
 
-        return redirect('/recipes')->with('message', 'Successfully deleted Recipe!');
+        return redirect('/my-recipes')->with('message', 'Successfully deleted Recipe!');
     }
 }

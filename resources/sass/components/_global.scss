@@ -19,8 +19,8 @@ body {
 .profile-avatar {
   object-fit: cover;
   margin: 0;
-  height: 150px;
-  width: 150px;
+  height: 120px;
+  width: 120px;
   border-radius: 100%;
   margin-right: 0;
 }
@@ -63,4 +63,8 @@ body {
     &:hover {
         color:$black !important;
     }
+}
+
+.w-15 {
+  width: 15% !important;
 }
