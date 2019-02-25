@@ -101,16 +101,22 @@
                 <h3 class="mb-2">Method</h3>
 
                 <div id="recipe_steps">
-                  <label class="font-weight-bold" for="recipe_step">Step 1</label>
-                  <textarea type="text" class="form-control addRecipeStage3" name="recipe_step" placeholder="Recipe Step"></textarea>
+                  <div class="entry">
+                    <label class="font-weight-bold stepLabel" for="recipe_step">Step 1</label>
+                    <div class=" input-group">
+                      <textarea class="form-control addRecipeStage3" name="recipe_step[]" type="text" placeholder="Recipe Step"></textarea>
+                      <span class="input-group-append">
+                        <button class="btn btn-success text-white btn-add" type="button">
+                          <i class="fas fa-plus-circle"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
-
-          <button type="button" class="btn btn-success text-white float-right addRecipeStep"name="button">
-            <i class="fas fa-plus-circle"></i> Add Step
-          </button>
         </div>
       </div>
 

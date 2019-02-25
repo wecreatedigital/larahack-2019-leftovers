@@ -36966,16 +36966,31 @@ $(document).ready(function () {
     } else {
       $('#addRecipeStage4Control').fadeOut("slow");
     }
-  }); // OnClick Add Recipe Step
+  }); // Dynamic Steps adding
 
-  $(document).on('click', '.addRecipeStep', function (e) {
+  $(document).on('click', '.btn-add', function (e) {
     e.preventDefault();
-    var matches = 1;
-    $(":input.addRecipeStage3").each(function (i, val) {
+    var controlForm = $('form'),
+        currentEntry = $(this).parents('.entry:first'),
+        newEntry = $(currentEntry.clone()).appendTo('#recipe_steps'); // Count number of Steps so far
+
+    var matches = 0;
+    $(".addRecipeStage3").each(function (i, val) {
       matches++;
     });
-    matches + 1;
-    $('#recipe_steps').append('<label class="font-weight-bold" for="recipe_step">Step ' + matches + '</label><textarea type="text" class="form-control addRecipeStage3" name="recipe_step" placeholder="Recipe Step"></textarea>');
+    newEntry.find('textarea').val('');
+    newEntry.find('label').closest('.stepLabel').text('Step ' + matches);
+    controlForm.find('.entry:not(:last) .btn-add').removeClass('btn-add').addClass('btn-remove').removeClass('btn-success').addClass('btn-danger').html('<i class="fas fa-minus-circle"></i>');
+  }).on('click', '.btn-remove', function (e) {
+    $(this).parents('.entry:first').remove();
+    e.preventDefault(); // Reset Steps from 1
+
+    var matches = 1;
+    $(".stepLabel").each(function (index, currentElement) {
+      $(currentElement).text('Step ' + matches);
+      matches++;
+    });
+    return false;
   });
 });
 

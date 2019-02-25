@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
+use App\Step;
 use AppHelper;
 use Auth;
 use Illuminate\Http\Request;
@@ -72,7 +73,7 @@ class RecipeController extends Controller
         }
 
         // Create new Recipe
-        $review = Recipe::create([
+        $recipe = Recipe::create([
             'user_id' => Auth::user()->id,
             'title' => $request->input('recipe_title'),
             'description' => $request->input('recipe_description'),
@@ -82,6 +83,14 @@ class RecipeController extends Controller
             'difficulty' => $request->input('recipe_difficulty'),
             'slug' => AppHelper::createSlug($request->input('recipe_title')),
         ]);
+
+        foreach ($request->input('recipe_step') as $key => $description) {
+            Step::create([
+                'recipe_id' => $recipe->id,
+                'step' => $key + 1,
+                'description' => $description,
+            ]);
+        }
 
         return redirect('/my-recipes')->with('message', 'Successfully created Recipe!');
     }
