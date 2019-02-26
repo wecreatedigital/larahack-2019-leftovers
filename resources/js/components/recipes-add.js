@@ -19,8 +19,7 @@ $( document ).ready(function() {
 
     e.preventDefault();
 
-    if( $('#recipe_ingredients').val().length
-    && $('#recipe_prep_time').val().length
+    if( $('#recipe_prep_time').val().length
     && $('#recipe_cook_time').val().length )
     {
       $('#addRecipeStage3Control').fadeIn( "slow" );
@@ -89,16 +88,22 @@ $( document ).ready(function() {
   $(document).on('click', '#addInredientToSelect', function(e)
   {
     $ingredient_name = $("#ingredient_name").find(":selected").text();
+    $ingredient_id = $("#ingredient_name").find(":selected").val();
     $ingredient_amount = $("#ingredient_amount").val();
     $ingredient_unit = $("#ingredient_unit").find(":selected").val();
 
-    $recipesIngredientVal = $ingredient_name + '|' + $ingredient_amount + '|' + $ingredient_unit;
-    $recipesIngredientText = $ingredient_name + ' ' + $ingredient_amount + $ingredient_unit;
+    $recipesIngredientVal = $ingredient_id + '|' + $ingredient_amount + '|' + $ingredient_unit;
+    $recipesIngredientText = $ingredient_name + ' ' + $ingredient_amount + ' ' + $ingredient_unit;
 
-    $('#recipesIngredients').append($('<option/>', {
-        value: $recipesIngredientVal,
-        text : $recipesIngredientText
-    }));
+    // If User has already added option
+    if ($('#recipeIngredients option[value="' +$recipesIngredientVal+ '"]').length) {
+      toastr.success('Already added ingredient!', 'Success Alert', {timeOut: 5000});
+      return false;
+    }
+
+    // Append it to the select
+    var newOption = new Option($recipesIngredientText, $recipesIngredientVal, true, true);
+    $('#recipeIngredients').append(newOption);
 
     $('#recipesIngredientBadges').append('<button type="button" class="btn btn-sm btn-primary m-1 removeRecipeIngredient" data-recipe-ingredient="'+ $recipesIngredientVal +'">'+ $recipesIngredientText +' <i class="fas fa-times"></i></button>');
 
@@ -109,7 +114,7 @@ $( document ).ready(function() {
   {
     $recipesIngredientVal = $(this).attr('data-recipe-ingredient');
 
-    jQuery("#recipesIngredients option").filter(function(){
+    jQuery("#recipeIngredients option").filter(function(){
         return $.trim($(this).val()) == $recipesIngredientVal;
     }).remove();
 

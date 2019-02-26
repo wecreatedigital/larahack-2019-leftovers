@@ -4,16 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RecipeIngredient extends Model
+class RecipeStep extends Model
 {
-    // Table Name
-    protected $table = 'ingredients';
+    protected $table = 'steps';
+
+    protected $fillable = ['recipe_id', 'step', 'description'];
 
     protected $guarded = [];
 
     /**
      * [recipe description]
-     * A Ingredient belongsTo a Recipe
+     * A Recipe Step belongsTo a Recipe
      *
      * @author  Christopher Kelker
      * @version 1.0.0

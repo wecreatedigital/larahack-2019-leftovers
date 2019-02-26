@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Recipe;
-use App\Step;
+use App\RecipeStep;
 use Illuminate\Http\Request;
 
 class StepController extends Controller
@@ -19,7 +19,7 @@ class StepController extends Controller
         $recipe = Recipe::find($request->input('recipe_id'));
 
         if (is_object($recipe) && $recipe->user_id == Auth::user()->id) {
-            $step = Step::create([
+            $step = RecipeStep::create([
                 'recipe_id' => $request->input('recipe_id'),
                 'step' => $request->input('step'),
                 'description' => $request->input('description'),
@@ -39,7 +39,7 @@ class StepController extends Controller
     public function update(Request $request, Step $step)
     {
         $recipe = Recipe::find($request->input('recipe_id'));
-        $step = Step::find($request->input('id'));
+        $step = RecipeStep::find($request->input('id'));
 
         if (
             is_object($recipe) && is_object($step) &&
@@ -64,7 +64,7 @@ class StepController extends Controller
     public function destroy(Step $step)
     {
         $recipe = Recipe::find($request->input('recipe_id'));
-        $step = Step::find($request->input('id'));
+        $step = RecipeStep::find($request->input('id'));
 
         if (
             is_object($recipe) && is_object($step) &&

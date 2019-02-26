@@ -48,7 +48,7 @@
 
 
 
-      <div class="card add-recipe-card" id="addRecipeStage2">
+      <div class="card add-recipe-card collapse" id="addRecipeStage2">
         <div class="card-body bg-light">
           <h3 class="mb-2">Ingredients</h3>
 
@@ -57,7 +57,7 @@
             <button type="button" class="btn btn-sm btn-primary mx-1 removeRecipeIngredient" data-recipe-ingredient="Abalone|12|teaspoon">Abalone 12 teaspoon <i class="fas fa-times"></i></button>
           </div>
 
-          <select class="form-control" name="recipes_ingredients[]" id="recipesIngredients" hidden>
+          <select class="form-control" name="recipe_ingredients[]" id="recipeIngredients" multiple hidden>
           </select>
 
           <div class="form-row">
@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-md-1 mt-auto">
-              <button class="btn btn-primary float-right mt-2" id="addInredientToSelect" type="button" style="height: calc(1.6em + 0.75rem + 2px);">
+              <button class="btn btn-success float-right mt-2" id="addInredientToSelect" type="button" style="height: calc(1.6em + 0.75rem + 2px);">
                 <i class="fas fa-plus-circle"></i>
               </button>
             </div>
@@ -127,7 +127,7 @@
         </div>
       </div>
 
-      <div class="card add-recipe-card" id="addRecipeStage3">
+      <div class="card add-recipe-card collapse" id="addRecipeStage3">
         <div class="card-body bg-light">
           <div class="row">
             <div class="col">

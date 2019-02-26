@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Option;
 use App\Recipe;
-use App\Step;
 use AppHelper;
 use Auth;
 use Illuminate\Http\Request;
@@ -87,11 +86,22 @@ class RecipeController extends Controller
             'slug' => AppHelper::createSlug($request->input('recipe_title')),
         ]);
 
+        // Create Recipe Steps
         foreach ($request->input('recipe_step') as $key => $description) {
-            Step::create([
-                'recipe_id' => $recipe->id,
+            $recipe->addStep([
                 'step' => $key + 1,
                 'description' => $description,
+            ]);
+        }
+
+        // Create Recipe Ingredients
+        foreach ($request->input('recipe_ingredients') as $key => $ingredient) {
+            $ingredient = explode('|', $ingredient);
+
+            $recipe->addIngredient([
+                'option_id' => $ingredient[0],
+                'amount' => $ingredient[1],
+                'unit' => $ingredient[2],
             ]);
         }
 
