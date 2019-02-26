@@ -36991,6 +36991,27 @@ $(document).ready(function () {
       matches++;
     });
     return false;
+  }); // Add Ingredient to Array
+
+  $(document).on('click', '#addInredientToSelect', function (e) {
+    $ingredient_name = $("#ingredient_name").find(":selected").text();
+    $ingredient_amount = $("#ingredient_amount").val();
+    $ingredient_unit = $("#ingredient_unit").find(":selected").val();
+    $recipesIngredientVal = $ingredient_name + '|' + $ingredient_amount + '|' + $ingredient_unit;
+    $recipesIngredientText = $ingredient_name + ' ' + $ingredient_amount + $ingredient_unit;
+    $('#recipesIngredients').append($('<option/>', {
+      value: $recipesIngredientVal,
+      text: $recipesIngredientText
+    }));
+    $('#recipesIngredientBadges').append('<button type="button" class="btn btn-sm btn-primary m-1 removeRecipeIngredient" data-recipe-ingredient="' + $recipesIngredientVal + '">' + $recipesIngredientText + ' <i class="fas fa-times"></i></button>');
+  }); // Remove Ingredient from Select array
+
+  $(document).on('click', '.removeRecipeIngredient', function (e) {
+    $recipesIngredientVal = $(this).attr('data-recipe-ingredient');
+    jQuery("#recipesIngredients option").filter(function () {
+      return $.trim($(this).val()) == $recipesIngredientVal;
+    }).remove();
+    $(this).remove();
   });
 });
 

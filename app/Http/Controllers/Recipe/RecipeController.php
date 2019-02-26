@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Option;
 use App\Recipe;
 use App\Step;
 use AppHelper;
@@ -33,7 +34,9 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        return View::make('recipes.recipes-add');
+        $ingredients = Option::ingredients()->get();
+
+        return view('recipes.recipes-add', compact('ingredients'));
     }
 
     /**
