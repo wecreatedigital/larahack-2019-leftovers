@@ -150,22 +150,6 @@ class AppHelper
      */
     public static function unitTypes()
     {
-        // Volume Units
-        $volume_units = array(
-            'Volume' => (object) array(
-                'teaspoon' => 'teaspoon',
-                'tablespoon' => 'tablespoon',
-                'ounce' => 'ounce',
-                'gill' => 'gill',
-                'cup' => 'cup',
-                'pint' => 'pint',
-                'quart' => 'quart',
-                'gallon' => 'gallon',
-                'ml' => 'ml',
-                'l' => 'l',
-                'dl' => 'dl',
-            ),
-        );
 
         // Mass_and Weight Units
         $mass_and_weight_units = array(
@@ -178,8 +162,25 @@ class AppHelper
             ),
         );
 
+        // Volume Units
+        $volume_units = array(
+            'Volume' => (object) array(
+                'tsp' => 'tsp',
+                'tbsp' => 'tbsp',
+                'ounce' => 'ounce',
+                'gill' => 'gill',
+                'cup' => 'cup',
+                'pint' => 'pint',
+                'quart' => 'quart',
+                'gallon' => 'gallon',
+                'ml' => 'ml',
+                'l' => 'l',
+                'dl' => 'dl',
+            ),
+        );
+
         // Create Array of Unit Types
-        $units = array_merge($volume_units, $mass_and_weight_units);
+        $units = array_merge($mass_and_weight_units, $volume_units);
 
         return $units;
     }

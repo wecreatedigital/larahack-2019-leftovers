@@ -4,6 +4,17 @@ $( document ).ready(function() {
         tags: true
     });
 
+    // $('.addRecipeSelect2').select2({
+    //     theme: 'bootstrap4'
+    // });
+
+        $('.addRecipeSelect2').select2({
+          theme: 'bootstrap4',
+          width: '100%',
+          placeholder: $(this).attr('placeholder'),
+          allowClear: Boolean($(this).data('allow-clear')),
+        });
+
     function makeSearch(){
 
         $('#append-results').empty();

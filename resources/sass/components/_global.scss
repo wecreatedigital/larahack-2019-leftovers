@@ -6,6 +6,13 @@ body {
     background-size:cover;
     background-blend-mode: overlay;
 }
+
+
+.navbar-basic {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
 .dropdown-toggle-avatar {
     object-fit: cover;
     margin: 0;
@@ -57,18 +64,18 @@ body {
   border-radius: 0.25rem;
 }
 
-//Global Form stylesheet
-.select2-container--default .select2-selection__choice {
-    background-color:$green !important;
-    color:$white !important;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice__remove  {
-    color:$white !important;
-    &:hover {
-        color:$black !important;
-    }
-}
+// //Global Form stylesheet
+// .select2-container--default .select2-selection__choice {
+//     background-color:$green !important;
+//     color:$white !important;
+// }
+//
+// .select2-container--default .select2-selection--multiple .select2-selection__choice__remove  {
+//     color:$white !important;
+//     &:hover {
+//         color:$black !important;
+//     }
+// }
 
 .w-15 {
   width: 15% !important;

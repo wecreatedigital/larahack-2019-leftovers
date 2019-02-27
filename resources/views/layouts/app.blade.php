@@ -9,13 +9,6 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="{{ asset('js/app.js') }}" defer></script>
-
-  {{-- TOASTR --}}
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
-
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
@@ -28,7 +21,7 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    <nav class="navbar navbar-expand-md navbar-light navbar-basic">
       <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <img src="/images/logo.svg" width="200px" alt="Leftovers">
@@ -107,6 +100,11 @@
   @endif
 
 </div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+{{-- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script> --}}
+<script src="{{ asset('js/app.js') }}" defer></script>
 
 </body>
 </html>

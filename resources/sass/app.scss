@@ -1,24 +1,67 @@
+/*
+|--------------------------------------------------------------------------
+| [Master Stylesheet]
+|--------------------------------------------------------------------------
+|  Project:    Food/Recipe web app
+|  Version:    1.1
+|  Last change:    27/02/19
+|  Assigned to:    Christopher Kelker (ck)
+|
+| [Table of contents]
+|  1. Plugins
+|  2. Fonts
+|  3. Variables
+|  4. Components
+*/
 
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
+/*
+|--------------------------------------------------------------------------
+| Plugins
+|--------------------------------------------------------------------------
+| 1. Bootstrap:
+|    https://www.npmjs.com/package/bootstrap
+|    * npm install bootstrap
+|    * npm remove bootstrap
+|
+| 2. Toastr:
+|    https://www.npmjs.com/package/toastr
+|    * npm install --save toastr
+|    * npm remove toastr
+|
+| 2. Croppie:
+|    https://www.npmjs.com/package/croppie
+|    * npm install croppie
+|    * npm remove croppie
+*/
 @import '~bootstrap/scss/bootstrap';
-
-// Plugins
+@import '~toastr/toastr.scss';
+@import '~croppie/croppie.css';
 @import 'plugins/select2';
 
-@import 'components/global'; // Global SCSS
-@import "components/profile-photo"; // Croppie Profile Photo SCSS
-@import "components/toastr"; // Toastr Notifications
-@import "components/home"; //Styles for the homepage
-@import "components/search";
-@import "components/nav";
+/*
+|--------------------------------------------------------------------------
+| Fonts
+|--------------------------------------------------------------------------
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+/*
+|--------------------------------------------------------------------------
+| Variables
+|--------------------------------------------------------------------------
+*/
+@import 'variables';
+
+/*
+|--------------------------------------------------------------------------
+| Components
+|--------------------------------------------------------------------------
+| 1. Global
+| 2. home
+| 3. search
+| 4. nav
+*/
+@import 'components/global';
+@import 'components/home';
+@import 'components/search';
+@import 'components/nav';

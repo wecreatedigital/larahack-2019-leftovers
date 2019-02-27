@@ -13,7 +13,7 @@
     </div>
 
 
-    <form action="/recipes-store" method="post">
+    <form action="/recipes-store" class="postNewRecipe" method="post">
       @csrf
 
       <div class="card add-recipe-card" id="addRecipeStage1">
@@ -48,7 +48,7 @@
 
 
 
-      <div class="card add-recipe-card collapse" id="addRecipeStage2">
+      <div class="card add-recipe-card " id="addRecipeStage2">
         <div class="card-body bg-light">
           <h3 class="mb-2">Ingredients</h3>
 
@@ -63,7 +63,7 @@
           <div class="form-row">
             <div class="col-md-4">
               <label for="ingredient_name">Ingredient</label>
-              <select class="form-control tags-ingredients" name="ingredient_name" id="ingredient_name">
+              <select class="form-control addRecipeSelect2" name="ingredient_name" id="ingredient_name">
                 @foreach($ingredients as $ingredient)
                   <option value="{{{ $ingredient->id }}}">{{{ $ingredient->value }}}</option>
                 @endforeach
@@ -75,7 +75,7 @@
             </div>
             <div class="col-md-4">
               <label for="ingredient_unit">Unit</label>
-              <select class="form-control tags-ingredients" name="ingredient_unit" id="ingredient_unit">
+              <select class="form-control addRecipeSelect2" name="ingredient_unit" id="ingredient_unit">
                 @foreach(AppHelper::unitTypes() as $type => $units)
                   <optgroup label="{{ $type }}">
                     @foreach($units as $unit)
