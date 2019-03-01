@@ -18,6 +18,10 @@
 
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />
+
 </head>
 <body>
   <div id="app">
@@ -103,8 +107,18 @@
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-{{-- <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script> --}}
+
 <script src="{{ asset('js/app.js') }}" defer></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script type="text/javascript">
+  $(".addRecipeSelect2").select2({
+  tags: true,
+  theme: "bootstrap",
+  width: 'resolve'
+  });
+</script>
 
 </body>
 </html>

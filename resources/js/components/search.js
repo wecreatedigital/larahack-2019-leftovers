@@ -1,19 +1,16 @@
 $( document ).ready(function() {
 
     $('.tags-ingredients').select2({
-        tags: true
+        tags: true,
+        allowClear: true,
+        width: "resolve"
     });
 
-    // $('.addRecipeSelect2').select2({
-    //     theme: 'bootstrap4'
+    // $(".addRecipeSelect2").select2({
+    //   tags: "true",
+    //   theme: 'bootstrap4',
+    //   allowClear: true
     // });
-
-        $('.addRecipeSelect2').select2({
-          theme: 'bootstrap4',
-          width: '100%',
-          placeholder: $(this).attr('placeholder'),
-          allowClear: Boolean($(this).data('allow-clear')),
-        });
 
     function makeSearch(){
 

@@ -64,19 +64,10 @@ body {
   border-radius: 0.25rem;
 }
 
-// //Global Form stylesheet
-// .select2-container--default .select2-selection__choice {
-//     background-color:$green !important;
-//     color:$white !important;
-// }
-//
-// .select2-container--default .select2-selection--multiple .select2-selection__choice__remove  {
-//     color:$white !important;
-//     &:hover {
-//         color:$black !important;
-//     }
-// }
-
 .w-15 {
   width: 15% !important;
+}
+
+.select2 {
+    width:100%!important;
 }

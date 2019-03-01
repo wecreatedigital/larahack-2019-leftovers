@@ -30,12 +30,18 @@ require('./bootstrap');
 |    * npm install --save toastr
 |    * npm remove toastr
 |
-| 2. Select2
+| 2. Select2:
+|    https://www.npmjs.com/package/select2
+|    * npm i select2
+|    * npm remove select2
 |
-| 3. Croppie
+| 3. Croppie:
+|    https://www.npmjs.com/package/croppie
+|    * npm install croppie
+|    * npm remove croppie
 */
 window.toastr = require('toastr');
-require('./plugins/select2');
+// window.select2 = require('select2');
 window.croppie = require('croppie');
 
 /*
