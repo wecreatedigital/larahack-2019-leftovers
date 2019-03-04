@@ -56,13 +56,21 @@ body {
 }
 
 .card {
-    border: 0 none;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top: 0 !important;
 }
 
-.add-recipe-card {
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+.recipeAddNavItem.active {
+    background-color: #f8f9fa !important;
+    border-bottom: 0 !important;
 }
+
+// .add-recipe-card {
+//   border: 1px solid rgba(0, 0, 0, 0.125);
+//   border-top: 0 !important;
+//   border-radius: 0.25rem;
+// }
 
 .w-15 {
   width: 15% !important;

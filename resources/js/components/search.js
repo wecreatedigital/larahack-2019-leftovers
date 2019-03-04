@@ -1,17 +1,5 @@
 $( document ).ready(function() {
 
-    $('.tags-ingredients').select2({
-        tags: true,
-        allowClear: true,
-        width: "resolve"
-    });
-
-    // $(".addRecipeSelect2").select2({
-    //   tags: "true",
-    //   theme: 'bootstrap4',
-    //   allowClear: true
-    // });
-
     function makeSearch(){
 
         $('#append-results').empty();
