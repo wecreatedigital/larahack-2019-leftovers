@@ -55,7 +55,7 @@ body {
     background-color: transparent;
 }
 
-.card {
+.add-recipe-card {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
     border-top: 0 !important;
@@ -78,4 +78,14 @@ body {
 
 .select2 {
     width:100%!important;
+}
+
+
+#progress-inputs {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.progress-bar-success {
+    background-color: $green;
 }

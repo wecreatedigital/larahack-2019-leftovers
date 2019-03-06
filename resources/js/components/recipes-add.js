@@ -1,53 +1,7 @@
 $( document ).ready(function() {
 
-    // On Change Recipe stage 1
-    $(document).on('input', '.addRecipeStage1', function(e) {
-
-        e.preventDefault();
-
-        if( $('#recipe_title').val().length && $('#recipe_description').val().length )
-        {
-            $('#addRecipeStage2Control').fadeIn( "slow" );
-        } else {
-            $('#addRecipeStage2Control').fadeOut( "slow" );
-        }
-
-    });
-
-    // On Change Recipe stage 2
-    $(document).on('input', '.addRecipeStage2', function(e) {
-
-        e.preventDefault();
-
-        if( $('#recipe_prep_time').val().length
-        && $('#recipe_cook_time').val().length )
-        {
-            $('#addRecipeStage3Control').fadeIn( "slow" );
-        } else {
-            $('#addRecipeStage3Control').fadeOut( "slow" );
-        }
-
-    });
-
-    // On Change Recipe stage 3
-    $(document).on('input', '.addRecipeStage3', function(e) {
-
-        e.preventDefault();
-
-        if( $(this).val().length ) {
-            $('#addRecipeStage4Control').fadeIn( "slow" );
-            $('#addRecipeStage4Control').fadeIn( "slow" );
-
-
-        } else {
-            $('#addRecipeStage4Control').fadeOut( "slow" );
-        }
-
-    });
-
-
     // Dynamic Steps adding
-    $(document).on('click', '.btn-add', function(e)
+    $(document).on('click', '.addNewRecipeStep', function(e)
     {
         e.preventDefault();
 
@@ -57,22 +11,26 @@ $( document ).ready(function() {
 
         // Count number of Steps so far
         var matches = 0;
-        $(".addRecipeStage3").each(function(i, val) {
+        $(".recipeStep").each(function(i, val) {
             matches++;
         });
 
         newEntry.find('textarea').val('');
         newEntry.find('label').closest('.stepLabel').text('Step '+ matches);
 
-        controlForm.find('.entry:not(:last) .btn-add')
-        .removeClass('btn-add').addClass('btn-remove')
+        controlForm.find('.entry:not(:last) .addNewRecipeStep')
+        .removeClass('addNewRecipeStep').addClass('removeNewRecipeStep')
         .removeClass('btn-success').addClass('btn-danger')
         .html('<i class="fas fa-minus-circle"></i>');
-    }).on('click', '.btn-remove', function(e)
-    {
-        $(this).parents('.entry:first').remove();
+    });
 
+    // Dynamic Steps removing
+    $(document).on('click', '.removeNewRecipeStep', function(e)
+    {
         e.preventDefault();
+
+        // Remove Recipe step
+        $(this).parents('.entry:first').remove();
 
         // Reset Steps from 1
         var matches = 1;
@@ -97,7 +55,7 @@ $( document ).ready(function() {
 
         // If User has already added option
         if ($('#recipeIngredients option[value="' +$recipesIngredientVal+ '"]').length) {
-            toastr.success('Already added ingredient!', 'Success Alert', {timeOut: 5000});
+            toastr.success('Ingredient already added!', 'Success Alert', {timeOut: 5000});
             return false;
         }
 
@@ -122,95 +80,98 @@ $( document ).ready(function() {
     });
 
 
+    toggleVisibilityOfTabControls();
+    toggleTabsUsingControls();
+    updateInputProgress();
+
+    // Change File Input to match current filename
+    $(document).on('change', '#validateFeatureImage', function(e)
+    {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+
+    });
 
 
 
+    // Toggle the visibility of the recipe tab stages using tab Controls
+    function toggleTabsUsingControls(){
 
+        var i, items = $('.addRecipeTabControl'), pane = $('.tab-pane');
 
+        // next
+        $('.nexttab').on('click', function(){
 
-
-    /* -------------------------------------------------------------
-          bootstrapTabControl
-      ------------------------------------------------------------- */
-      function bootstrapTabControl(){
-          var i, items = $('.addRecipeTabControl'), pane = $('.tab-pane');
-          // next
-          $('.nexttab').on('click', function(){
-              for(i = 0; i < items.length; i++){
-                  if($(items[i]).hasClass('active') == true){
-                      break;
-                  }
-              }
-              if(i < items.length - 1){
-                  // for tab
-                  $(items[i]).removeClass('active');
-                  $(items[i+1]).addClass('active');
-                  // for pane
-                  $(pane[i]).removeClass('show active');
-                  $(pane[i+1]).addClass('show active');
-              }
-
-          });
-          // Prev
-          $('.prevtab').on('click', function(){
-              for(i = 0; i < items.length; i++){
-                  if($(items[i]).hasClass('active') == true){
-                      break;
-                  }
-              }
-              if(i != 0){
-                  // for tab
-                  $(items[i]).removeClass('active');
-                  $(items[i-1]).addClass('active');
-                  // for pane
-                  $(pane[i]).removeClass('show active');
-                  $(pane[i-1]).addClass('show active');
-              }
-          });
-      }
-      bootstrapTabControl();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function updateInputProgress(){
-        var filledFields = 0;
-        $("#addRecipeForm").find("input, select, textarea").each(function(){
-            if($(this).val() != ""){
-                filledFields++;
+            for(i = 0; i < items.length; i++){
+                if($(items[i]).hasClass('active') == true){
+                    break;
+                }
             }
+            if(i < items.length - 1){
+                // for tab
+                $(items[i]).removeClass('active');
+                $(items[i+1]).addClass('active');
+                // for pane
+                $(pane[i]).removeClass('show active');
+                $(pane[i+1]).addClass('show active');
+            }
+            toggleVisibilityOfTabControls();
+            updateInputProgress();
+
         });
 
-        var percent = Math.ceil(100 * filledFields / totalFields);
-        $("#progress-inputs .progress-bar").attr("aria-valuenow", percent).width(percent + "%").find(".sr-only").html(percent + "% Complete");
+        // Prev
+        $('.prevtab').on('click', function(){
 
-        return percent;
+            for(i = 0; i < items.length; i++){
+                if($(items[i]).hasClass('active') == true){
+                    break;
+                }
+            }
+            if(i != 0){
+                // for tab
+                $(items[i]).removeClass('active');
+                $(items[i-1]).addClass('active');
+                // for pane
+                $(pane[i]).removeClass('show active');
+                $(pane[i-1]).addClass('show active');
+            }
+            toggleVisibilityOfTabControls();
+            updateInputProgress();
+        });
     }
 
-    //Input Progress
-    var totalFields = $("#addRecipeForm").find("input, select, textarea").length;
-    $("#addRecipeForm").click(function(){
-        updateInputProgress();
-    });
-    $("#addRecipeForm .btn-success").click(function(){
-        var percent = updateInputProgress();
-        if(percent == 100){
-            alert("Finished inputs successfully!");
+    // Toggle the visibility of the recipe tab stages
+    function toggleVisibilityOfTabControls()
+    {
+        if (!$('#image-tab').hasClass('show') || !$('#image-tab').hasClass('active') ) {
+            $('.nexttab').removeClass('d-none');
+        } else {
+            $('.nexttab').addClass('d-none');
         }
-    })
+
+        if (!$('#basic-info-tab').hasClass('show') || !$('#basic-info-tab').hasClass('active') ) {
+            $('.prevtab').removeClass('d-none');
+        } else {
+            $('.prevtab').addClass('d-none');
+        }
+    }
+
+    // Give the User Feedback on how long they have left until the Form
+    // has been completed.
+    function updateInputProgress()
+    {
+        if ( $('#basic-info-tab').hasClass('show') || $('#basic-info-tab').hasClass('active') ) {
+            $("#progress-inputs .progress-bar").attr("aria-valuenow", '25%').width('25%').find(".sr-only").html('Stage 1');
+        } else if ( $('#ingredients-tab').hasClass('show') || $('#ingredients-tab').hasClass('active') ) {
+            $("#progress-inputs .progress-bar").attr("aria-valuenow", '50%').width('50%').find(".sr-only").html('Stage 2');
+        } else if ( $('#method-tab').hasClass('show') || $('#method-tab').hasClass('active') ) {
+            $("#progress-inputs .progress-bar").attr("aria-valuenow", '75%').width('75%').find(".sr-only").html('Stage 3');
+        } else {
+            $("#progress-inputs .progress-bar").attr("aria-valuenow", '100%').width('100%').find(".sr-only").html('Stage 4');
+        }
+    }
+
 
 
 });

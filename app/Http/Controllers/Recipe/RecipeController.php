@@ -51,19 +51,23 @@ class RecipeController extends Controller
         $rules = array(
             'recipe_title' => 'required|string|max:15',
             'recipe_servings' => 'nullable',
-            'recipe_prep_time' => 'nullable|string',
-            'recipe_cook_time' => 'nullable|string',
+            'recipe_prep_time' => 'required|string',
+            'recipe_cook_time' => 'required|string',
             'recipe_description' => 'required|string|different:recipe_title',
             'recipe_difficulty' => 'nullable',
+            'recipe_feature_image' => 'required',
         );
         // Validation Messages
         $messages = array(
 
-            // Title validation messages
-            'recipe_title.required' => 'Recipe Title is required!',
+            // Recipe Title validation messages
+            'recipe_title.required' => 'Give your recipe a Title.',
 
-            // Description validation messages
-            'recipe_description.required' => 'Recipe Description is required!',
+            // Recipe Description validation messages
+            'recipe_description.required' => 'Give your recipe a Description.',
+
+            // Recipe Feature Image validation messages
+            'recipe_feature_image.required' => 'A Recipe Feature Image is required.',
         );
 
         // Validate Request against rules
@@ -71,7 +75,7 @@ class RecipeController extends Controller
 
         // If Validation fails
         if ($validator->fails()) {
-            return response()->back(array('errors' => $validator->getMessageBag()->toArray()));
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         // Create new Recipe
