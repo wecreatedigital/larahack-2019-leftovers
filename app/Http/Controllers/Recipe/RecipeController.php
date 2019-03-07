@@ -12,6 +12,23 @@ use Validator;
 
 class RecipeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+
+        /**
+         * [Validator description]
+         * Validate array size against parameters
+         * @var [type]
+         */
+        Validator::extend('check_array', function ($attribute, $value, $parameters, $validator) {
+            if (count($value) <= $parameters[0]) {
+                return false;
+            }
+
+            return true;
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,24 +63,18 @@ class RecipeController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
         // Validation Rules
         $rules = array(
 
             'recipe_title' => 'required|string|max:15',
             'recipe_description' => 'required|string|different:recipe_title',
-
             'recipe_servings' => 'nullable',
             'recipe_difficulty' => 'nullable',
-
-            'recipe_ingredients' => '',
-            'ingredient_name' => '',
-            'ingredient_amount' => '',
-            'ingredient_unit' => '',
+            'recipe_ingredients' => 'check_array:1',
             'recipe_utensils' => '',
             'recipe_prep_time' => 'required|string',
             'recipe_cook_time' => 'required|string',
-            'recipe_step' => '',
+            'recipe_step' => 'check_array:1',
             'recipe_feature_image' => 'required',
         );
         // Validation Messages
@@ -77,6 +88,9 @@ class RecipeController extends Controller
 
             // Recipe Feature Image validation messages
             'recipe_feature_image.required' => 'A Recipe Feature Image is required.',
+
+            // Recipe Ingredients validation messages
+            'recipe_ingredients.check_array' => 'Please add more ingredients.',
         );
 
         // Validate Request against rules
@@ -99,24 +113,11 @@ class RecipeController extends Controller
             'slug' => AppHelper::createSlug($request->input('recipe_title')),
         ]);
 
-        // Create Recipe Steps
-        foreach ($request->input('recipe_step') as $key => $description) {
-            $recipe->addStep([
-                'step' => $key + 1,
-                'description' => $description,
-            ]);
-        }
-
         // Create Recipe Ingredients
-        foreach ($request->input('recipe_ingredients') as $key => $ingredient) {
-            $ingredient = explode('|', $ingredient);
+        $recipe->addIngredients($request->input('recipe_ingredients'));
 
-            $recipe->addIngredient([
-                'option_id' => $ingredient[0],
-                'amount' => $ingredient[1],
-                'unit' => $ingredient[2],
-            ]);
-        }
+        // Create Recipe Steps
+        $recipe->addSteps($request->input('recipe_step'));
 
         return redirect('/my-recipes')->with('message', 'Successfully created Recipe!');
     }
