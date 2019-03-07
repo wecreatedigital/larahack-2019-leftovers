@@ -49,12 +49,21 @@ class RecipeController extends Controller
         $user = Auth::user();
         // Validation Rules
         $rules = array(
+
             'recipe_title' => 'required|string|max:15',
+            'recipe_description' => 'required|string|different:recipe_title',
+
             'recipe_servings' => 'nullable',
+            'recipe_difficulty' => 'nullable',
+
+            'recipe_ingredients' => '',
+            'ingredient_name' => '',
+            'ingredient_amount' => '',
+            'ingredient_unit' => '',
+            'recipe_utensils' => '',
             'recipe_prep_time' => 'required|string',
             'recipe_cook_time' => 'required|string',
-            'recipe_description' => 'required|string|different:recipe_title',
-            'recipe_difficulty' => 'nullable',
+            'recipe_step' => '',
             'recipe_feature_image' => 'required',
         );
         // Validation Messages

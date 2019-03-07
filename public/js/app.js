@@ -20207,8 +20207,16 @@ $(document).ready(function () {
   $(document).on('click', '.addNewRecipeStep', function (e) {
     e.preventDefault();
     var controlForm = $('form'),
-        currentEntry = $(this).parents('.entry:first'),
-        newEntry = $(currentEntry.clone()).appendTo('#recipe_steps'); // Count number of Steps so far
+        currentEntry = $(this).parents('.entry:first'); // If current textarea element is empty
+
+    if ($(this).parents('.entry:first').find('textarea').val() == '') {
+      toastr.error('Please enter a value!', 'Error Alert', {
+        timeOut: 5000
+      });
+      return false;
+    }
+
+    newEntry = $(currentEntry.clone()).appendTo('#recipe_steps'); // Count number of Steps so far
 
     var matches = 0;
     $(".recipeStep").each(function (i, val) {
@@ -20217,6 +20225,9 @@ $(document).ready(function () {
     newEntry.find('textarea').val('');
     newEntry.find('label').closest('.stepLabel').text('Step ' + matches);
     controlForm.find('.entry:not(:last) .addNewRecipeStep').removeClass('addNewRecipeStep').addClass('removeNewRecipeStep').removeClass('btn-success').addClass('btn-danger').html('<i class="fas fa-minus-circle"></i>');
+    toastr.success('Step added!', 'Success Alert', {
+      timeOut: 5000
+    });
   }); // Dynamic Steps removing
 
   $(document).on('click', '.removeNewRecipeStep', function (e) {
@@ -20241,7 +20252,7 @@ $(document).ready(function () {
     $recipesIngredientText = $ingredient_name + ' ' + $ingredient_amount + ' ' + $ingredient_unit; // If User has already added option
 
     if ($('#recipeIngredients option[value="' + $recipesIngredientVal + '"]').length) {
-      toastr.success('Ingredient already added!', 'Success Alert', {
+      toastr.warning('Ingredient already added!', 'Info Alert', {
         timeOut: 5000
       });
       return false;
@@ -20251,6 +20262,9 @@ $(document).ready(function () {
     var newOption = new Option($recipesIngredientText, $recipesIngredientVal, true, true);
     $('#recipeIngredients').append(newOption);
     $('#recipesIngredientBadges').append('<button type="button" class="btn btn-sm btn-primary m-1 removeRecipeIngredient" data-recipe-ingredient="' + $recipesIngredientVal + '">' + $recipesIngredientText + ' <i class="fas fa-times"></i></button>');
+    toastr.success('Ingredient added!', 'Success Alert', {
+      timeOut: 5000
+    });
   }); // Remove Ingredient from Select array
 
   $(document).on('click', '.removeRecipeIngredient', function (e) {

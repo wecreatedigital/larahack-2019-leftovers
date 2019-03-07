@@ -6,7 +6,14 @@ $( document ).ready(function() {
         e.preventDefault();
 
         var controlForm = $('form'),
-        currentEntry = $(this).parents('.entry:first'),
+        currentEntry = $(this).parents('.entry:first');
+
+        // If current textarea element is empty
+        if ($(this).parents('.entry:first').find('textarea').val() == '') {
+            toastr.error('Please enter a value!', 'Error Alert', {timeOut: 5000});
+            return false;
+        }
+
         newEntry = $(currentEntry.clone()).appendTo('#recipe_steps');
 
         // Count number of Steps so far
@@ -22,6 +29,8 @@ $( document ).ready(function() {
         .removeClass('addNewRecipeStep').addClass('removeNewRecipeStep')
         .removeClass('btn-success').addClass('btn-danger')
         .html('<i class="fas fa-minus-circle"></i>');
+
+        toastr.success('Step added!', 'Success Alert', {timeOut: 5000});
     });
 
     // Dynamic Steps removing
@@ -55,7 +64,7 @@ $( document ).ready(function() {
 
         // If User has already added option
         if ($('#recipeIngredients option[value="' +$recipesIngredientVal+ '"]').length) {
-            toastr.success('Ingredient already added!', 'Success Alert', {timeOut: 5000});
+            toastr.warning('Ingredient already added!', 'Info Alert', {timeOut: 5000})
             return false;
         }
 
@@ -65,6 +74,7 @@ $( document ).ready(function() {
 
         $('#recipesIngredientBadges').append('<button type="button" class="btn btn-sm btn-primary m-1 removeRecipeIngredient" data-recipe-ingredient="'+ $recipesIngredientVal +'">'+ $recipesIngredientText +' <i class="fas fa-times"></i></button>');
 
+        toastr.success('Ingredient added!', 'Success Alert', {timeOut: 5000});
     });
 
     // Remove Ingredient from Select array
