@@ -40,7 +40,7 @@ Route::group(['middlewareGroups' => ['web', 'auth']], function () {
     Route::get('/recipe/{id}/edit', 'RecipeController@edit');
     Route::post('/recipe/{id}/update', 'RecipeController@update');
     Route::get('/recipe/{id}/delete', 'RecipeController@destroy');
-    Route::get('/recipe/{slug}', 'RecipeController@show');
+    Route::get('/recipes/{recipe}', 'RecipeController@show');
 });
 
 Auth::routes();

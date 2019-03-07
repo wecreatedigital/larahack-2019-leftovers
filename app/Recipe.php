@@ -12,6 +12,11 @@ class Recipe extends Model
 
     protected $fillable = ['user_id', 'title', 'description', 'prep_time', 'cook_time', 'servings', 'difficulty', 'slug'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     /**
      * [tags description]
      * -- Recipes hasMany Tags
@@ -117,7 +122,7 @@ class Recipe extends Model
 
     public function getSlug()
     {
-        return url('/recipe/'.$this->slug);
+        return "/recipes/{$this->slug}";
     }
 
     /**

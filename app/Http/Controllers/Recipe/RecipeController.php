@@ -123,18 +123,18 @@ class RecipeController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * [show description]
+     * Accept the parameter as a recipe if the slug exists
      *
-     * @param  \App\Recipe  $recipe
-     * @return \Illuminate\Http\Response
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-03-07
+     * @param   Recipe     $recipe
+     * @return  [type]
      */
-    public function show($slug)
+    public function show(Recipe $recipe)
     {
-        $recipe = Recipe::where('slug', $slug)->first();
-
-        return View::make('recipes.recipe-view', [
-            'recipe' => $recipe,
-        ]);
+        return view('recipes.recipe-view', compact('recipe'));
     }
 
     /**
