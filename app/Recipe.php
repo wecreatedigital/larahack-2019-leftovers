@@ -2,10 +2,15 @@
 
 namespace App;
 
+use App\RecipeEvents\addRecipeIngredients;
+use App\RecipeEvents\addRecipeSteps;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
+    use addRecipeIngredients;
+    use addRecipeSteps;
+
     protected $table = 'recipes';
 
     protected $guarded = [];
@@ -61,34 +66,6 @@ class Recipe extends Model
     }
 
     /**
-     * [ingredients description]
-     * Get a list of ingredients associated with the Recipe
-     *
-     * @author  Christopher Kelker
-     * @version 1.0.0
-     * @date    2019-02-26
-     * @return  [type]
-     */
-    public function ingredients()
-    {
-        return $this->hasMany(RecipeIngredient::class, 'recipe_id');
-    }
-
-    /**
-     * [steps description]
-     * A Recipe hasMany RecipeStep
-     *
-     * @author  Christopher Kelker
-     * @version 1.0.0
-     * @date    2019-02-26
-     * @return  [type]
-     */
-    public function steps()
-    {
-        return $this->hasMany(RecipeStep::class, 'recipe_id');
-    }
-
-    /**
      * Get a list of utensils associated with the recipe
      * @author Dean Appleton-Claydon
      * @date   2019-02-23
@@ -126,94 +103,30 @@ class Recipe extends Model
     }
 
     /**
-     * [addIngredient description]
-     * Add a Ingredient to a Recipe
+     * [ingredients description]
+     * Get a list of ingredients associated with the Recipe
      *
      * @author  Christopher Kelker
      * @version 1.0.0
      * @date    2019-02-26
-     * @param   [type]     $ingredient
+     * @return  [type]
      */
-    public function addIngredient($ingredient)
+    public function ingredients()
     {
-        $this->ingredients()->create($ingredient);
+        return $this->hasMany(RecipeIngredient::class, 'recipe_id');
     }
 
     /**
-     * [addIngredient description]
-     * Add Ingredients to a Recipe
+     * [steps description]
+     * A Recipe hasMany RecipeStep
      *
      * @author  Christopher Kelker
      * @version 1.0.0
      * @date    2019-02-26
-     * @param   [type]     $ingredients
+     * @return  [type]
      */
-    public function addIngredients($ingredients)
+    public function steps()
     {
-        // Remove any nullable instances
-        $ingredients = array_filter($ingredients);
-
-        // Make sure array is not empty
-        if (count($ingredients) < 1 && ! empty($ingredients)) {
-            return false;
-        }
-
-        // Loop through Recipe Ingredients
-        foreach ($ingredients as $key => $ingredient) {
-
-            // Explode string to get values
-            $ingredient = explode('|', $ingredient);
-
-            // Add Ingredient using relationship creator instance
-            $this->addIngredient([
-                'option_id' => $ingredient[0],
-                'amount' => $ingredient[1],
-                'unit' => $ingredient[2],
-            ]);
-        }
-    }
-
-    /**
-     * [addStep description]
-     * Add a Step to a Recipe
-     *
-     * @author  Christopher Kelker
-     * @version 1.0.0
-     * @date    2019-02-26
-     * @param   [type]     $step
-     */
-    public function addStep($step)
-    {
-        $this->steps()->create($step);
-    }
-
-    /**
-     * [addStep description]
-     * Add Steps to a Recipe
-     *
-     * @author  Christopher Kelker
-     * @version 1.0.0
-     * @date    2019-02-26
-     * @param   [type]     $step
-     */
-    public function addSteps($steps)
-    {
-        // Remove any nullable instances
-        $steps = array_filter($steps);
-
-        // Make sure array is not empty
-        if (count($steps) < 1 && ! empty($steps)) {
-            return false;
-        }
-
-        // Loop through Recipe Steps
-        foreach ($steps as $key => $description) {
-
-            // Add Step using relationship creator instance
-            $this->addStep([
-                'step' => $key + 1,
-                'description' => $description,
-            ]);
-        }
+        return $this->hasMany(RecipeStep::class, 'recipe_id');
     }
 }
