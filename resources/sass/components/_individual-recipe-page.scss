@@ -1,0 +1,70 @@
+.item-feature {
+  margin: 0px;
+}
+.item-feature ul {
+  margin-left: -1px;
+  margin-right: -1px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item-feature ul li {
+  margin-top: 2px;
+  max-width: 25%;
+  flex: 0 0 25%;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+@media only screen and (max-width: 767px) {
+  .item-feature ul li {
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .item-feature ul li {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
+.item-feature ul li .feature-wrap {
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+}
+.item-feature ul li .media {
+  height: 100%;
+  padding: 12px 5px;
+  align-items: center;
+}
+.item-feature ul li .feature-icon {
+  font-size: 24px;
+  line-height: 1;
+}
+.item-feature ul li .feature-icon i,
+.item-feature ul li .feature-icon i:before {
+  font-size: 30px;
+  color: #a8a8a8;
+}
+.item-feature ul li .feature-title {
+  font-size: 18px;
+  color: #111111;
+}
+
+
+
+
+// TWITTER HEART
+.heart {
+  width: 100px;
+  height: 100px;
+  background: url('/images/heart.png') no-repeat;
+  background-position: 0 0;
+  cursor: pointer;
+  transition: background-position 1s steps(28);
+  transition-duration: 0s;
+
+  &.is-active {
+    transition-duration: 1s;
+    background-position: -2800px 0;
+  }
+}

@@ -102,20 +102,16 @@ class RecipeController extends Controller
         }
 
         // Create new Recipe
-        // $recipe = Recipe::create([
-        //     'user_id' => Auth::user()->id,
-        //     'title' => $request->input('recipe_title'),
-        //     'description' => $request->input('recipe_description'),
-        //     'prep_time' => $request->input('recipe_prep_time'),
-        //     'cook_time' => $request->input('recipe_cook_time'),
-        //     'servings' => $request->input('recipe_servings'),
-        //     'difficulty' => $request->input('recipe_difficulty'),
-        //     'slug' => AppHelper::createSlug($request->input('recipe_title')),
-        // ]);
-
-        $recipe = Recipe::findOrFail(2);
-
-        dd($recipe);
+        $recipe = Recipe::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->input('recipe_title'),
+            'description' => $request->input('recipe_description'),
+            'prep_time' => $request->input('recipe_prep_time'),
+            'cook_time' => $request->input('recipe_cook_time'),
+            'servings' => $request->input('recipe_servings'),
+            'difficulty' => $request->input('recipe_difficulty'),
+            'slug' => AppHelper::createSlug($request->input('recipe_title')),
+        ]);
 
         // Create Recipe Ingredients
         $recipe->addIngredients($request->input('recipe_ingredients'));
@@ -219,5 +215,16 @@ class RecipeController extends Controller
         $recipe->delete();
 
         return redirect('/my-recipes')->with('message', 'Successfully deleted Recipe!');
+    }
+
+    public function like(Recipe $recipe, Request $request)
+    {
+        if ($request->input('boolean') == 'true') {
+            $recipe->like();
+        } else {
+            $recipe->unlike();
+        }
+
+        return $recipe->likes;
     }
 }

@@ -1,10 +1,9 @@
 body {
-    background-color:
-    rgba(0, 0, 0, 0.30);
-    background-image: url(https://source.unsplash.com/1600x900/?recipes,food);
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-blend-mode: overlay;
+  background-color: $white;
+  // background-image: url(https://source.unsplash.com/1600x900/?recipes,food);
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-blend-mode: overlay;
 }
 
 
@@ -14,13 +13,13 @@ body {
 }
 
 .dropdown-toggle-avatar {
-    object-fit: cover;
-    margin: 0;
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
-    margin-right: 0;
-    border: 2px solid #eee;
+  object-fit: cover;
+  margin: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  margin-right: 0;
+  border: 2px solid #eee;
 }
 
 .profile-avatar {
@@ -34,36 +33,36 @@ body {
 
 //Buttons
 .btn-primary {
-    background-color:$orange;
-    color:$white;
-    border:0;
-    &:hover {
-        background-color:$dark-orange;
-    }
+  background-color:$orange;
+  color:$white;
+  border:0;
+  &:hover {
+    background-color:$dark-orange;
+  }
 }
 
 .btn-secondary {
-    background-color:$green;
-    color:$white;
-    border:0;
-    &:hover {
-        background-color:$dark-green;
-    }
+  background-color:$green;
+  color:$white;
+  border:0;
+  &:hover {
+    background-color:$dark-green;
+  }
 }
 
 .jumbotron {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .add-recipe-card {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
-    border-top: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-top: 0 !important;
 }
 
 .recipeAddNavItem.active {
-    background-color: #f8f9fa !important;
-    border-bottom: 0 !important;
+  background-color: #f8f9fa !important;
+  border-bottom: 0 !important;
 }
 
 // .add-recipe-card {
@@ -77,15 +76,27 @@ body {
 }
 
 .select2 {
-    width:100%!important;
+  width:100%!important;
 }
 
 
 #progress-inputs {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 
 .progress-bar-success {
-    background-color: $green;
+  background-color: $green;
+}
+
+
+.position-relative{
+  position: relative;
+}
+.position-absolute {
+  position: absolute;
+}
+.top-right{
+  top: -10px;
+  right: -10px;
 }

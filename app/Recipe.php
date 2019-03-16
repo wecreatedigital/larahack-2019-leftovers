@@ -129,4 +129,60 @@ class Recipe extends Model
     {
         return $this->hasMany(RecipeStep::class, 'recipe_id');
     }
+
+    /**
+     * [likes description]
+     * A Recipe can haveMany likes
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-03-12
+     * @return  [type]
+     */
+    public function likes()
+    {
+        return $this->morphMany(Like::class, 'liked');
+    }
+
+    /**
+     * [like description]
+     * A User can like a Recipe
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-03-12
+     * @return  [type]
+     */
+    public function like()
+    {
+        $attributes = ['user_id' => auth()->id()];
+
+        // If we did not find a record in the database that
+        // matches the Current User and is liked by the current Recipe
+        // thrn create that record
+        if ( ! $this->likes()->where($attributes)->exists()) {
+            $this->likes()->create($attributes);
+        }
+    }
+
+    /**
+     * [unlike description]
+     * A User can unlike a Recipe
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-03-12
+     * @return  [type]
+     */
+    public function unlike()
+    {
+        $attributes = ['user_id' => auth()->id()];
+
+        // If we did find a record in the database that
+        // matches the Current User and is liked by the current Recipe
+        // then delete that record
+        if ($this->likes()->where($attributes)->exists()) {
+            $this->likes()->where($attributes)->delete();
+        }
+    }
 }

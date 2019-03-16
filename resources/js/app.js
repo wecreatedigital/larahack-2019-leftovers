@@ -49,3 +49,4 @@ window.croppie = require('croppie');
 require('./components/settings-funtionality.js');
 require('./components/recipes-add.js');
 require('./components/search.js');
+require('./components/hearting.js');
