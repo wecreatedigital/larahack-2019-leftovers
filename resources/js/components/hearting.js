@@ -1,10 +1,10 @@
 $(document).on('click', '.heart', function(e) {
   e.preventDefault();
-  $(this).toggleClass("is-active");
+  $('.heart').toggleClass("is-active");
 
-  $recipe_slug = $(this).attr('data-recipe-slug');
+  $recipe_slug = $('.heart').attr('data-recipe-slug');
 
-  if ($(this).hasClass('is-active')) {
+  if ($('.heart').hasClass('is-active')) {
     $boolean = 'true';
   } else {
     $boolean = 'false';
@@ -23,7 +23,7 @@ $(document).on('click', '.heart', function(e) {
     datatype: 'json',
     success: function(data) {
 
-      if ($(this).hasClass('is-active')) {
+      if ($('.heart').hasClass('is-active')) {
         $('.likes-count').html(parseInt($('.likes-count').html(), 10)+1)
 
         if ($('.likes-count').html() <= 1) {

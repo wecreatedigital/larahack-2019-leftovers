@@ -11217,10 +11217,11 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   margin: 0;
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
   border-radius: 100%;
   margin-right: 0;
+  border: 2px solid #eee;
 }
 
 .btn-primary {

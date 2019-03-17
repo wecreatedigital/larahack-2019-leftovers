@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
   <div class="container">
     <h2 class="mb-1">{{ $recipe->title }}</h2>
     <p class="mb-2 stars">
@@ -12,7 +13,9 @@
     </p>
     <div class="position-relative">
       <img src="https://source.unsplash.com/1600x900/?recipes,food" class="img-fluid rounded" alt="">
-      <div class="position-absolute top-right"><div class="heart" data-recipe-slug="{{ $recipe->slug }}"></div></div>
+      @if (Auth::check())
+        <div class="position-absolute top-right"><div class="heart" data-recipe-slug="{{ $recipe->slug }}"></div></div>
+      @endif
     </div>
 
     <div class="item-feature">
@@ -80,7 +83,45 @@
         </div>
       </div>
       <div class="float-right">
-        <p><span class="likes-count">1</span> <span class="likes-title">{{ str_plural('Like', 1) }}</span></p>
+        <p><span class="likes-count">{{ $recipe->likes_count }}</span> <span class="likes-title">{{ str_plural('Like', $recipe->likes_count) }}</span></p>
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="media align-items-center">
+      <img src="{{ url($recipe->user->avatar) }}" alt="Blog Author" class="rounded-circle mr-3 profile-avatar">
+      <div class="media-body">
+        @if (!empty($recipe->user->bio))
+          <p>
+            {{ $recipe->user->bio }}
+          </p>
+        @endif
+
+        <div class="blockquote-footer">
+          Written by {{ $recipe->user->name() }}
+        </div>
+          <ul class="author-social list-unstyled list-inline m-0">
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#"><i class="fab fa-skype"></i></a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 

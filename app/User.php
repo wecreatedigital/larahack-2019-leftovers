@@ -75,6 +75,20 @@ class User extends Authenticatable
     }
 
     /**
+     * [name description]
+     * User's Firstname and Lastname combined
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-23
+     * @return  [type]
+     */
+    public function name()
+    {
+        return $this->firstname.' '.$this->lastname;
+    }
+
+    /**
      * [reviews description]
      * User hasMany Reviews
      *

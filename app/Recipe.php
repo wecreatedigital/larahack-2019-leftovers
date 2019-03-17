@@ -22,6 +22,20 @@ class Recipe extends Model
         return 'slug';
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        /**
+         * [static description]
+         * Add Global Likes Count method
+         * @var [type]
+         */
+        static::addGlobalScope('LikesCount', function ($builder) {
+            $builder->withCount('likes');
+        });
+    }
+
     /**
      * [tags description]
      * -- Recipes hasMany Tags
@@ -184,5 +198,19 @@ class Recipe extends Model
         if ($this->likes()->where($attributes)->exists()) {
             $this->likes()->where($attributes)->delete();
         }
+    }
+
+    /**
+         * [getLikesCountAttribute description]
+         * Return x number of Likes
+         *
+         * @author  Christopher Kelker
+         * @version 1.0.0
+         * @date    2019-03-08
+         * @return  [type]
+         */
+    public function getLikesCountAttribute()
+    {
+        return $this->likes()->count();
     }
 }
