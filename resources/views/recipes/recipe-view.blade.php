@@ -87,42 +87,60 @@
       </div>
     </div>
 
-
-
-
-
-
-    <div class="media align-items-center">
-      <img src="{{ url($recipe->user->avatar) }}" alt="Blog Author" class="rounded-circle mr-3 profile-avatar">
-      <div class="media-body">
-        @if (!empty($recipe->user->bio))
-          <p>
-            {{ $recipe->user->bio }}
-          </p>
-        @endif
-
-        <div class="blockquote-footer">
-          Written by {{ $recipe->user->name() }}
-        </div>
-          <ul class="author-social list-unstyled list-inline m-0">
-            <li class="list-inline-item">
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#"><i class="fab fa-skype"></i></a>
-            </li>
-          </ul>
+    <div class="row no-gutters">
+      <div class="col-md-6 col-12">
+        <p class="mr-2">{{ $recipe->description }}</p>
+      </div>
+      <div class="col-md-6 col-12">
+        <div class="ingredients-section bg-grey-ish rounded">
+            <h4 class="item-title mb-4"><i class="fas fa-list-ul mr-2"></i>Ingredients</h4>
+            <ul class="list-group rounded bg-shadow mb-1">
+              @foreach ($recipe->ingredients as $ingredient)
+                <li class="list-group-item">
+                  {{ $ingredient->ingredient_title }}
+                </li>
+              @endforeach
+            </ul>
         </div>
       </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="media align-items-center">
+          <img src="{{ url($recipe->user->avatar) }}" alt="Blog Author" class="rounded-circle mr-3 profile-avatar">
+          <div class="media-body">
+            @if (!empty($recipe->user->bio))
+              <p class="mb-1">
+                {{ AppHelper::ellipsisFormat($recipe->user->bio, 200) }}
+              </p>
+            @endif
+
+            <div class="blockquote-footer">
+              Written by {{ $recipe->user->name() }}
+            </div>
+              <ul class="author-social list-unstyled list-inline m-0">
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-skype"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
     </div>
 
   @endsection
