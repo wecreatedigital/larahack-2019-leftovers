@@ -14,7 +14,7 @@
     <div class="position-relative">
       <img src="https://source.unsplash.com/1600x900/?recipes,food" class="img-fluid rounded" alt="">
       @if (Auth::check())
-        <div class="position-absolute top-right"><div class="heart" data-recipe-slug="{{ $recipe->slug }}"></div></div>
+        <div class="position-absolute top-right"><div class="heart @if (AppHelper::checkLikeExists($recipe)) is-active @endif" data-recipe-slug="{{ $recipe->slug }}"></div></div>
       @endif
     </div>
 

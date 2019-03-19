@@ -184,4 +184,20 @@ class AppHelper
 
         return $units;
     }
+
+    /**
+     * [checkLikeExists description]
+     * If Like exists return true
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-03-19
+     * @return  [type]
+     */
+    public static function checkLikeExists($recipe)
+    {
+        $attributes = ['user_id' => auth()->id()];
+
+        return $recipe->likes()->where($attributes)->exists();
+    }
 }
