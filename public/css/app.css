@@ -11289,6 +11289,21 @@ body {
   right: -10px;
 }
 
+.hr-short {
+  position: relative;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.hr-short:before {
+  position: absolute;
+  content: "";
+  bottom: -2px;
+  left: 0;
+  background-color: #007bff;
+  height: 4px;
+  width: 50px;
+}
+
 .card.transparent {
   background-color: transparent !important;
   color: #fff;
