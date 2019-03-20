@@ -20,16 +20,15 @@ class Tag extends Model
 
     /**
      * [recipes description]
-     * -- Tags hasMany Recipes
-     * -- Recipes hasMany Tags
+     * Get all of the recipes that are assigned this tag
      *
-     * @author  Christopher Kelker
+     * @author Christopher Kelker - @date 2019-03-20
+     * @editor  Christopher Kelker
      * @version 1.0.0
-     * @date    2019-02-23
      * @return  [type]
      */
     public function recipes()
     {
-        return $this->belongsToMany('App\Recipe', 'recipe_tag', 'tag_id', 'recipe_id');
+        return $this->morphedByMany(Recipe::class, 'taggable');
     }
 }

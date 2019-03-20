@@ -48,7 +48,7 @@ class Recipe extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Tag', 'recipe_tag', 'recipe_id', 'tag_id');
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
     /**

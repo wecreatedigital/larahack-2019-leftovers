@@ -87,47 +87,92 @@
         </div>
       </div>
 
-      <div class="row no-gutters">
-        <div class="col-md-6 col-12">
-          <p class="mr-2">{{ $recipe->description }}</p>
+      <div class="row my-3">
+        <div class="col">
+          <p class="m-0">{{ $recipe->description }}</p>
         </div>
-        <div class="col-md-6 col-12">
-          <div class="ingredients-section bg-grey-ish rounded">
-            <h4 class="item-title mb-2"><i class="fas fa-list-ul mr-2 text-primary"></i>Ingredients</h4>
-            <hr class="hr-short mt-0">
+      </div>
 
-            <ul class="list-group rounded bg-shadow mb-1">
-              @foreach ($recipe->ingredients as $ingredient)
-                <li class="list-group-item">
-                  {{ $ingredient->ingredient_title }}
+
+
+      <section class="section-steps section-ingredients my-3">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="row">
+                <div class="col my-3">
+                  <h3 class="item-title mb-2"><i class="fas fa-clipboard-list mr-2 text-primary"></i>Directions</h3>
+                  <hr class="hr-short mt-0">
+                </div>
+              </div>
+
+              @foreach ($recipe->steps as $step)
+                <div class="row">
+                  <div class="col-12">
+                    <div class="d-flex flex-row mb-3">
+                      <div class="w-20 mr-2">
+                        <h5 class="text-primary">{{ $step->step }}.</h5>
+                      </div>
+                      <p class="m-0">{{ $step->description }}</p>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
+            </div>
+
+            <div class="col-md-6 col-12">
+              <div class="ingredients-section bg-grey-ish rounded">
+                <h4 class="item-title mb-2"><i class="fas fa-list-ul mr-2 text-primary"></i>Ingredients</h4>
+                <hr class="hr-short mt-0">
+
+                <ul class="list-group rounded bg-shadow mb-1">
+                  @foreach ($recipe->ingredients as $ingredient)
+                    <li class="list-group-item">
+                      {{ $ingredient->ingredient_title }}
+                    </li>
+                  @endforeach
+                </ul>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      <section class="section-tags">
+        <div class="row">
+          <div class="col">
+            <ul class="list-inline">
+              @foreach ($recipe->tags as $tag)
+                <li class="list-inline-item">
+                  <a href="/recipes/tag/{{ $tag->id }}" class="btn btn-sm btn-outline-primary">{{ $tag->name }}</a>
                 </li>
               @endforeach
             </ul>
           </div>
         </div>
-      </div>
+
+        <hr>
+      </section>
 
 
 
-      <div class="row my-3">
-        <div class="col">
-          <h3 class="item-title mb-2"><i class="fas fa-clipboard-list mr-2 text-primary"></i>Directions</h3>
-          <hr class="hr-short mt-0">
-        </div>
-          @foreach ($recipe->steps as $step)
-            <div class="col-12">
-            <a class="btn btn-primary mb-3" data-toggle="collapse" href="#step-control-{{ $step->id }}" role="button" aria-expanded="false" aria-controls="step-control-{{ $step->id }}">
-              Step {{ $step->step }}
-            </a>
-
-            <div class="collapse @if ($loop->first) show @endif mb-5" id="step-control-{{ $step->id }}">
-              <div class="card card-body">
-                {{ $step->description }}
-              </div>
-            </div>
+      <section class="section-share my-3">
+        <div class="d-flex justify-content-between">
+          <div class="align-self-center">
+            <h5 class="section-title mb-0"><span>Share</span> this recipe</h5>
           </div>
-          @endforeach
-      </div>
+          <ul class="list-inline m-0">
+            <li class="list-inline-item">
+              <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-instagram"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-facebook"><i class="fab fa-facebook-f"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="http://scripteden.com/download/eden-ui/" target="_blank" class="btn-social btn-twitter"><i class="fab fa-twitter"></i></a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
 
 
@@ -136,14 +181,15 @@
           <div class="media align-items-center">
             <img src="{{ url($recipe->user->avatar) }}" alt="Blog Author" class="rounded-circle mr-3 profile-avatar">
             <div class="media-body">
+
               @if (!empty($recipe->user->bio))
                 <p class="mb-1">
-                  {{ AppHelper::ellipsisFormat($recipe->user->bio, 200) }}
+                  {{ AppHelper::ellipsisFormat($recipe->user->bio, 100) }}
                 </p>
               @endif
 
               <div class="blockquote-footer">
-                Written by {{ $recipe->user->name() }}
+                by {{ $recipe->user->name() }}
               </div>
               <ul class="author-social list-unstyled list-inline m-0">
                 <li class="list-inline-item">

@@ -115,3 +115,15 @@ body {
     height: 4px;
     width: 50px;
 }
+
+.w-20 {
+  min-width: 20px;
+}
+
+.section-title {
+  span {
+    color: $primary !important;
+  }
+
+  color: #000;
+}
