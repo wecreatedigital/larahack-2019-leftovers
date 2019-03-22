@@ -200,4 +200,19 @@ class AppHelper
 
         return $recipe->likes()->where($attributes)->exists();
     }
+
+    /**
+     * [timeFormat description]
+     * Write Description here...
+     *
+     * @author Christopher Kelker - @date 2019-03-20
+     * @editor  Christopher Kelker
+     * @version 1.0.0
+     * @param   [type]      $recipe
+     * @return  [type]
+     */
+    public static function timeFormat($time)
+    {
+        return \Carbon\Carbon::createFromFormat('H:i', $time)->format('H:i');
+    }
 }

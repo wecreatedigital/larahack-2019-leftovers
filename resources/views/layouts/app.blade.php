@@ -46,6 +46,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('results') }}">{{ __('Find Recipes') }}</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('team') }}">{{ __('Team') }}</a>
+            </li>
           </ul>
 
           <!-- Right Side Of Navbar -->

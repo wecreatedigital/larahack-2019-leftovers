@@ -28,7 +28,7 @@
                 </div>
                 <div class="media-body space-sm">
                   <div class="feature-title">Prep Time</div>
-                  <div class="feature-sub-title">45 Mins</div>
+                  <div class="feature-sub-title">{{ AppHelper::timeFormat($recipe->prep_time) }} {{ str_plural('Minutes', $recipe->prep_time) }}</div>
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                 </div>
                 <div class="media-body space-sm">
                   <div class="feature-title">Cook Time</div>
-                  <div class="feature-sub-title">45 Mins</div>
+                  <div class="feature-sub-title">{{ AppHelper::timeFormat($recipe->cook_time) }} {{ str_plural('Minutes', $recipe->cook_time) }}</div>
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="media-body space-sm">
                   <div class="feature-title">Servings</div>
-                  <div class="feature-sub-title">10 People</div>
+                  <div class="feature-sub-title">{{ $recipe->servings }} {{ str_plural('Person', $recipe->servings) }}</div>
                 </div>
               </div>
             </div>

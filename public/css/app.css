@@ -11195,6 +11195,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: overlay;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar-basic {
@@ -11314,6 +11315,41 @@ body {
 
 .section-title span {
   color: #007bff !important;
+}
+
+.bg-shadow {
+  box-shadow: 5px 5px 50px 0px rgba(0, 0, 0, 0.13);
+  /* Safari */
+  transition: width 2s;
+  transition: box-shadow 0.3s;
+}
+
+.bg-shadow:hover {
+  box-shadow: 5px 5px 50px 0px rgba(0, 0, 0, 0.25) !important;
+}
+
+.list-inline-item-padding:not(:last-child) {
+  margin-right: 1rem !important;
+}
+
+.mb-6 {
+  margin-bottom: 6rem !important;
+}
+
+.mb-7 {
+  margin-bottom: 7rem !important;
+}
+
+.mb-8 {
+  margin-bottom: 8rem !important;
+}
+
+.mb-9 {
+  margin-bottom: 9rem !important;
+}
+
+.mb-10 {
+  margin-bottom: 10rem !important;
 }
 
 .card.transparent {
@@ -11842,5 +11878,24 @@ a.btn-social,
 
 .btn-email:hover {
   background-color: #6bd079;
+}
+
+.card-profile-img {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  line-height: 1.5em;
 }
 
