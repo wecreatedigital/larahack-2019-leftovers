@@ -12,6 +12,7 @@
           </h5>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-6">
           <div class="card-profile mb-6">
