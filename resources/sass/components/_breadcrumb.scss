@@ -1,0 +1,13 @@
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
+  color: $white;
+  content: "/";
+}
+
+.breadcrumb-item.active {
+  color: $light-font;
+}
+.breadcrumb {
+  background-color: $primary !important;
+}

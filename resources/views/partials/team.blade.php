@@ -10,6 +10,7 @@
           <h5 class="mb-5">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h5>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-6">
           <div class="card card-profile">

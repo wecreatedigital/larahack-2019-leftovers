@@ -55,17 +55,22 @@
 
 /*
 |--------------------------------------------------------------------------
+| Global
+|--------------------------------------------------------------------------
+*/
+@import 'global/main';
+@import 'global/background';
+@import 'global/margin';
+
+/*
+|--------------------------------------------------------------------------
 | Components
 |--------------------------------------------------------------------------
-| 1. Global
-| 2. home
-| 3. search
-| 4. nav
 */
-@import 'components/global';
 @import 'components/home';
 @import 'components/search';
 @import 'components/nav';
 @import 'components/individual-recipe-page';
 @import 'components/social-buttons';
 @import 'components/team';
+@import 'components/breadcrumb';
