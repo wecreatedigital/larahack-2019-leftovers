@@ -97,43 +97,8 @@
 
       <section class="section-steps section-ingredients my-3">
           <div class="row">
-            <div class="col-md-6">
-
-              <div class="row">
-                <div class="col my-3">
-                  <h3 class="item-title mb-2"><i class="fas fa-clipboard-list mr-2 text-primary"></i>Directions</h3>
-                  <hr class="hr-short mt-0">
-                </div>
-              </div>
-
-              @foreach ($recipe->steps as $step)
-                <div class="row">
-                  <div class="col-12">
-                    <div class="d-flex flex-row mb-3">
-                      <div class="w-20 mr-2">
-                        <h5 class="text-primary">{{ $step->step }}.</h5>
-                      </div>
-                      <p class="m-0">{{ $step->description }}</p>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-            </div>
-
-            <div class="col-md-6 col-12">
-              <div class="ingredients-section bg-grey-ish rounded">
-                <h4 class="item-title mb-2"><i class="fas fa-list-ul mr-2 text-primary"></i>Ingredients</h4>
-                <hr class="hr-short mt-0">
-
-                <ul class="list-group rounded bg-shadow mb-1">
-                  @foreach ($recipe->ingredients as $ingredient)
-                    <li class="list-group-item">
-                      {{ $ingredient->ingredient_title }}
-                    </li>
-                  @endforeach
-                </ul>
-              </div>
-            </div>
+            @include('recipes.sections.steps')
+            @include('recipes.sections.ingredients')
           </div>
       </section>
 
