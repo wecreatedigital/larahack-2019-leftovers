@@ -6,7 +6,8 @@
     <div class="container">
       <div class="row">
         <div class="col text-center">
-          <h2 class="mb-2">The Executive Team 3</h2>
+            <h2 class="section-title mb-2"><span>Meet the team</span> behind the magic</h2>
+            <hr class="mt-0 w-50">
           <h5 class="mb-5">This is the paragraph where you can write more details about your team. Keep you user engaged by providing meaningful information.</h5>
         </div>
       </div>

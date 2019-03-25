@@ -7,6 +7,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.text-primary {
+  color: $primary !important;
+}
+
 .navbar-basic {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -100,16 +104,27 @@ body {
   min-width: 20px;
 }
 
-.hr-short {
+.hr-primary-start,
+.hr-primary-end, {
   position: relative;
   border-bottom: 1px solid #d7d7d7;
 }
 
-.hr-short:before {
+.hr-primary-start:before {
     position: absolute;
     content: "";
     bottom: -2px;
     left: 0;
+    background-color: $primary;
+    height: 4px;
+    width: 50px;
+}
+
+.hr-primary-end:before {
+    position: absolute;
+    content: "";
+    bottom: -2px;
+    right: 0;
     background-color: $primary;
     height: 4px;
     width: 50px;
