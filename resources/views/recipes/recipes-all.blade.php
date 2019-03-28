@@ -14,10 +14,13 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <form class="" action="index.html" method="post">
+          @csrf
+
           <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Author's name or Recipe Search...">
+            <input type="text" class="form-control" name="filter_name" id="filterName" placeholder="Author's name or Recipe name...">
             <div class="input-group-append" id="button-addon4">
-              <button class="btn btn-outline-primary" type="button"><i class="fas fa-plus"></i> Advanced Search</button>
+              <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#advancedSearchModal"><i class="fas fa-plus"></i> Advanced Search</button>
+              @include('recipes.modals.advanced-search-modal')
               <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
             </div>
           </div>
