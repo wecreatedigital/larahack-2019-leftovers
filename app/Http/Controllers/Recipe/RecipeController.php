@@ -227,4 +227,11 @@ class RecipeController extends Controller
 
         return $recipe->likes;
     }
+
+    public function all()
+    {
+        $recipes = Recipe::all();
+
+        return view('recipes.recipes-all', compact('recipes'));
+    }
 }

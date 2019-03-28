@@ -145,3 +145,7 @@ body {
 .rounded-2 {
   border-radius: 2rem;
 }
+
+.btn-outline-primary:hover {
+  color: $white !important;
+}

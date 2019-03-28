@@ -20206,10 +20206,11 @@ __webpack_require__(/*! ./components/hearting.js */ "./resources/js/components/h
 
 $(document).on('click', '.heart', function (e) {
   e.preventDefault();
-  $('.heart').toggleClass("is-active");
-  $recipe_slug = $('.heart').attr('data-recipe-slug');
+  $(this).toggleClass("is-active");
+  $this = $(this);
+  $recipe_slug = $(this).attr('data-recipe-slug');
 
-  if ($('.heart').hasClass('is-active')) {
+  if ($(this).hasClass('is-active')) {
     $boolean = 'true';
   } else {
     $boolean = 'false';
@@ -20227,10 +20228,12 @@ $(document).on('click', '.heart', function (e) {
     },
     datatype: 'json',
     success: function success(data) {
-      if ($('.heart').hasClass('is-active')) {
+      if ($this.hasClass('is-active')) {
         $('.likes-count').html(parseInt($('.likes-count').html(), 10) + 1);
 
-        if ($('.likes-count').html() <= 1) {
+        if ($('.likes-count').html() == 0) {
+          $('.likes-title').text('Likes');
+        } else if ($('.likes-count').html() == 1) {
           $('.likes-title').text('Like');
         } else {
           $('.likes-title').text('Likes');
@@ -20238,7 +20241,9 @@ $(document).on('click', '.heart', function (e) {
       } else {
         $('.likes-count').html(parseInt($('.likes-count').html(), 10) - 1);
 
-        if ($('.likes-count').html() <= 1) {
+        if ($('.likes-count').html() == 0) {
+          $('.likes-title').text('Likes');
+        } else if ($('.likes-count').html() == 1) {
           $('.likes-title').text('Like');
         } else {
           $('.likes-title').text('Likes');

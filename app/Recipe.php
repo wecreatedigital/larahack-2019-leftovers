@@ -213,4 +213,18 @@ class Recipe extends Model
     {
         return $this->likes()->count();
     }
+
+    /**
+     * [path description]
+     * Get Recipe absolute path
+     *
+     * @author  Christopher Kelker
+     * @version 1.0.0
+     * @date    2019-02-25
+     * @return  [type]
+     */
+    public function path()
+    {
+        return "/recipes/{$this->slug}";
+    }
 }
