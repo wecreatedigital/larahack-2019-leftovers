@@ -44,7 +44,7 @@
               <a class="nav-link" href="{{ route('add-recipe') }}">{{ __('Add a Recipe') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('results') }}">{{ __('Find Recipes') }}</a>
+              <a class="nav-link" href="{{ route('search-recipes') }}">{{ __('Find Recipes') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('team') }}">{{ __('Team') }}</a>
