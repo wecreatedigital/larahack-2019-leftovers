@@ -15,7 +15,7 @@ Route::get('/testing123', function () {
 });
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/about', 'HomeController@index')->name('about');
+Route::get('/about', 'HomeController@about')->name('about');
 Route::get('/search/results', 'SearchController@getResults')->name('results');
 Route::get('/team', function () {
     return view('partials.team');

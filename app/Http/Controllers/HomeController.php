@@ -28,4 +28,9 @@ class HomeController extends Controller
             'ingredients' => $ingredients,
         ]);
     }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
 }

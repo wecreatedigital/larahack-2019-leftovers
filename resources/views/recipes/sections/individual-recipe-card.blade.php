@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-12 mb-4">
-  <div class="card bg-shadow">
+  <div class="card card-recipe bg-shadow">
     <div class="position-relative">
       <a href="{{ $recipe->path() }}">
         <img class="card-img-top" src="https://source.unsplash.com/1600x900/?recipes,food" alt="Card image cap">

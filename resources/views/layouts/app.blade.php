@@ -40,11 +40,13 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('about') }}">{{ __('About') }}</a>
             </li>
+            @if (Auth::check())
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('add-recipe') }}">{{ __('Add Recipe') }}</a>
+              </li>
+            @endif
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('add-recipe') }}">{{ __('Add a Recipe') }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('search-recipes') }}">{{ __('Find Recipes') }}</a>
+              <a class="nav-link" href="{{ route('search-recipes') }}">{{ __('Search') }}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('team') }}">{{ __('Team') }}</a>
@@ -79,55 +81,34 @@
                   <a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user w-15"></i> Profile</a>
                   <a class="dropdown-item" href="{{ route('my-recipes') }}"><i class="fas fa-utensils w-15"></i> My Recipes</a>
                   <a class="dropdown-item" href="{{ route('settings') }}"><i class="fas fa-cog w-15"></i> Account Settings</a>
-                  <a class="dropdown-item" href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                  <i class="fas fa-power-off w-15"></i> {{ __('Logout') }}
-                </a>
+                  <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fas fa-power-off w-15"></i> {{ __('Logout') }}
+                  </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-              </div>
-            </li>
-          @endguest
-        </ul>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                  </form>
+                </div>
+              </li>
+            @endguest
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <main class="py-4">
-    @yield('content')
-  </main>
+    <main class="py-4">
+      @yield('content')
+    </main>
 
-  @if (session('status'))
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    @if (session('status'))
       <div class="alert alert-success" role="alert">
-          {{ session('status') }}
+        {{ session('status') }}
       </div>
-  @endif
+    @endif
 
-</div>
-
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<script src="{{ asset('js/app.js') }}" defer></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-
-<script type="text/javascript">
-  $(".tags-ingredients").select2({
-  tags: true,
-  theme: "bootstrap",
-  width: 'resolve'
-  });
-
-  $(".select2").select2({
-  tags: true,
-  theme: "bootstrap",
-  width: 'resolve'
-  });
-</script>
-
+  </div>
 </body>
 </html>
