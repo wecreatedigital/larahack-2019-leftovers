@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Option;
+use App\Recipe;
 
 class HomeController extends Controller
 {
@@ -24,8 +25,11 @@ class HomeController extends Controller
     {
         $ingredients = Option::ingredients()->get();
 
+        $popular_recipes = Recipe::popularRecipes(3)->get();
+
         return view('home', [
             'ingredients' => $ingredients,
+            'popular_recipes' => $popular_recipes,
         ]);
     }
 

@@ -26074,6 +26074,12 @@ $(".select2").select2({
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
+$(function () {
+  $('[data-toggle-second="tooltip"]').tooltip();
+});
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
 $('.card-recipe').hover(function () {
   $(this).find('.favourite').fadeIn(200);
 }, function () {
@@ -26100,7 +26106,11 @@ $('.click').click(function () {
     }, 150);
     setTimeout(function () {}, 1000);
   }
-});
+}); // $('.card-recipe').hover(function() {
+//   $(this).find('.actions').fadeIn('slow', function () {
+//       $(this).find('.actions').animate({'opacity': 'show', 'paddingTop': 0}, 1000);
+//   });
+// });
 
 /***/ }),
 

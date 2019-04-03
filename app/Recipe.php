@@ -131,6 +131,24 @@ class Recipe extends Model
     }
 
     /**
+     * [scopePopularRecipes description]
+     * Get All Recipes where they have likes,
+     * order them by the quantities of likes (being Popular) and
+     * if specified take a specific amount ($take)
+     *
+     * @author Christopher Kelker - @date 2019-04-03
+     * @editor  Christopher Kelker
+     * @version 1.0.0
+     * @param   [type]      $query
+     * @param   [type]      $take
+     * @return  [type]
+     */
+    public function scopePopularRecipes($query, $take = null)
+    {
+        return $query->with('likes')->whereHas('likes')->orderBy('likes_count', 'desc')->take($take);
+    }
+
+    /**
      * [steps description]
      * A Recipe hasMany RecipeStep
      *

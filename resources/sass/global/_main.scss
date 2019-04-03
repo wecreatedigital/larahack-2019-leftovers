@@ -1,10 +1,28 @@
-body {
-  background-color: $white;
+.bg-image {
   // background-image: url(https://source.unsplash.com/1600x900/?recipes,food);
   background-repeat:no-repeat;
   background-size:cover;
   background-blend-mode: overlay;
   font-family: 'Open Sans', sans-serif;
+  // height: 100vh;
+  //
+  // &:before {
+  //   height: 100vh;
+  //   content: '';
+  // 	background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+  // 	opacity: .6;
+  // }
+}
+
+.square {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-full {
+  height: 100vh;
 }
 
 .text-primary {
@@ -111,23 +129,23 @@ body {
 }
 
 .hr-primary-start:before {
-    position: absolute;
-    content: "";
-    bottom: -2px;
-    left: 0;
-    background-color: $primary;
-    height: 4px;
-    width: 50px;
+  position: absolute;
+  content: "";
+  bottom: -2px;
+  left: 0;
+  background-color: $primary;
+  height: 4px;
+  width: 50px;
 }
 
 .hr-primary-end:before {
-    position: absolute;
-    content: "";
-    bottom: -2px;
-    right: 0;
-    background-color: $primary;
-    height: 4px;
-    width: 50px;
+  position: absolute;
+  content: "";
+  bottom: -2px;
+  right: 0;
+  background-color: $primary;
+  height: 4px;
+  width: 50px;
 }
 
 .section-title {
@@ -139,7 +157,7 @@ body {
 }
 
 .list-inline-item-padding:not(:last-child) {
-    margin-right: 1rem !important;
+  margin-right: 1rem !important;
 }
 
 .rounded-2 {
@@ -152,4 +170,89 @@ body {
 
 .btn-rounded {
   border-radius: 2rem !important;
+}
+
+// Bounce Card effect
+.card-bounce {
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+  background-clip: border-box;
+
+  -moz-transition: all .2s ease-in-out !important;
+  -webkit-transition: all .2s ease-in-out !important;
+  -ms-transition: all .2s ease-in-out !important;
+  -o-transition: all .2s ease-in-out !important;
+  transition: all .2s ease-in-out !important;
+
+   &:hover {
+     box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
+     transform:translateY(-10px);
+     -webkit-transform:translateY(-10px);
+     -ms-transform:translateY(-10px);
+     -moz-transform:translateY(-10px)
+   }
+}
+
+
+
+
+// Card download-button on hover effect
+.card-hover {
+
+  opacity: 1;
+
+  .download-button,
+  .user-avatar,
+  .heart-amount {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover {
+
+    .position-relative {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+      background-color: $black;
+    }
+
+    .download-button {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      // -webkit-transform: translate(-50%, -50%);
+      // transform: translate(-50%, -50%);
+      visibility: visible;
+      opacity: 10;
+      transition: opacity 1s ease;
+    }
+
+    .heart-amount {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      visibility: visible;
+      opacity: 10;
+      transition: opacity 1s ease;
+    }
+
+    .user-avatar {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      visibility: visible;
+      opacity: 10;
+      transition: opacity 1s ease;
+    }
+
+    .card-img-top {
+      opacity: 0.7;
+    }
+  }
+
+}
+
+.text-red {
+  color: #f44242 !important;
 }

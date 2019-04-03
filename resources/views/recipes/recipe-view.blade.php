@@ -4,7 +4,7 @@
 
   <div class="container">
     <h2 class="mb-1">{{ $recipe->title }}</h2>
-    <p class="mb-2 stars">
+    <p class="mb-2 text-primary stars">
       <i class="fas fa-star"></i>
       <i class="fas fa-star"></i>
       <i class="fas fa-star"></i>

@@ -46,6 +46,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['at_username', 'name'];
+
     /**
      * [recipes description]
      * User hasMany Recipes
@@ -83,9 +85,9 @@ class User extends Authenticatable
      * @date    2019-02-23
      * @return  [type]
      */
-    public function name()
+    public function getNameAttribute()
     {
-        return $this->firstname.' '.$this->lastname;
+        return "{$this->firstname} {$this->lastname}";
     }
 
     /**
@@ -128,5 +130,14 @@ class User extends Authenticatable
         }
 
         return Tag::whereIn('id', $tags)->get();
+    }
+
+    public function getAtUsernameAttribute()
+    {
+        if ( ! empty($this->username)) {
+            return '@'.$this->username;
+        }
+
+        return $this->name;
     }
 }

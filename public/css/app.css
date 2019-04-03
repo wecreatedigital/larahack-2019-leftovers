@@ -357,7 +357,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -802,7 +802,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4380,15 +4380,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(145, 173, 65, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4588,8 +4588,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
 }
 
 .nav-tabs .dropdown-menu {
@@ -11186,12 +11186,22 @@ button.toast-close-button {
 |--------------------------------------------------------------------------
 */
 
-body {
-  background-color: #fff;
+.bg-image {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: overlay;
   font-family: "Open Sans", sans-serif;
+}
+
+.square {
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-full {
+  height: 100vh;
 }
 
 .text-primary {
@@ -11344,6 +11354,74 @@ body {
   border-radius: 2rem !important;
 }
 
+.card-bounce {
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+  background-clip: border-box;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.card-bounce:hover {
+  box-shadow: 0 12px 19px -7px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+}
+
+.card-hover {
+  opacity: 1;
+}
+
+.card-hover .download-button,
+.card-hover .user-avatar,
+.card-hover .heart-amount {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.card-hover:hover .position-relative {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  background-color: #000;
+}
+
+.card-hover:hover .download-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  visibility: visible;
+  opacity: 10;
+  transition: opacity 1s ease;
+}
+
+.card-hover:hover .heart-amount {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  visibility: visible;
+  opacity: 10;
+  transition: opacity 1s ease;
+}
+
+.card-hover:hover .user-avatar {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  visibility: visible;
+  opacity: 10;
+  transition: opacity 1s ease;
+}
+
+.card-hover:hover .card-img-top {
+  opacity: 0.7;
+}
+
+.text-red {
+  color: #f44242 !important;
+}
+
 .bg-shadow {
   box-shadow: 5px 5px 50px 0px rgba(0, 0, 0, 0.13);
   /* Safari */
@@ -11379,6 +11457,10 @@ body {
   margin-bottom: 10rem !important;
 }
 
+.from-top {
+  margin-top: -1.5rem !important;
+}
+
 /*
 |--------------------------------------------------------------------------
 | Components
@@ -11396,7 +11478,6 @@ body {
   text-align: center;
   font-weight: 400;
   color: #fff;
-  margin: 200px 0 0 0;
 }
 
 .form .tags-ingredients {
@@ -11536,7 +11617,7 @@ body {
 a.btn-social,
 .btn-social {
   border-radius: 50%;
-  color: #ffffff !important;
+  color: #ffffff;
   display: inline-block;
   height: 54px;
   line-height: 54px;

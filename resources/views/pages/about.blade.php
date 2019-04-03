@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row align-items-center text-center text-md-left">
         <div class="col-md-6 col-lg-5 mb-5 mb-md-0">
-          <h1 class="section-title mb-1"><span>Discover</span> a little bit about us.</h1>
+          <h1 class="section-title mb-1"><span>Lorem</span> ipsum dolor sit.</h1>
           <hr>
           <p class="m-0">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, facilis!

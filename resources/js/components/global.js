@@ -15,6 +15,14 @@
     $('[data-toggle="tooltip"]').tooltip()
   });
 
+  $(function () {
+    $('[data-toggle-second="tooltip"]').tooltip()
+  });
+
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+
 
 $('.card-recipe').hover(function() {
   $(this).find('.favourite').fadeIn(200);
@@ -47,3 +55,9 @@ $('.click').click(function() {
 		},1000)
 	}
 })
+
+// $('.card-recipe').hover(function() {
+//   $(this).find('.actions').fadeIn('slow', function () {
+//       $(this).find('.actions').animate({'opacity': 'show', 'paddingTop': 0}, 1000);
+//   });
+// });

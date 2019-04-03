@@ -17,7 +17,7 @@
                 @endif
               </div>
               <div class="col-lg-8 align-self-center">
-                <p class="mb-1">Username: {{ AppHelper::fullname() }}</p>
+                <p class="mb-1">Username: {{ Auth::user()->name }}</p>
                 <p class="mb-1">Joined on: {{ AppHelper::dateFormat(Auth::user()->created_at) }}</p>
                 <p class="mb-0 stars">
                   <i class="fas fa-star"></i>
