@@ -154,7 +154,7 @@
               @endif
 
               <div class="blockquote-footer">
-                by {{ $recipe->user->name() }}
+                by {{ $recipe->user->name }}
               </div>
               <ul class="author-social list-unstyled list-inline m-0">
                 <li class="list-inline-item">
