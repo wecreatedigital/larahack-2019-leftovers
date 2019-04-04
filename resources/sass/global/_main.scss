@@ -3,6 +3,7 @@
   background-repeat:no-repeat;
   background-size:cover;
   background-blend-mode: overlay;
+  background-position: center center;
   font-family: 'Open Sans', sans-serif;
   // height: 100vh;
   //
@@ -172,8 +173,12 @@
   border-radius: 2rem !important;
 }
 
-// Bounce Card effect
-.card-bounce {
+.text-red {
+  color: #f44242 !important;
+}
+
+// Bounce effect
+.bounce {
   flex-direction: column;
   min-width: 0;
   display: flex;
@@ -194,10 +199,38 @@
    }
 }
 
+// Bounce the Card Header Image only effect
+.card-header-bounce {
+  .card-header-image {
+    flex-direction: column;
+    min-width: 0;
+    display: flex;
+    background-clip: border-box;
+
+    -moz-transition: all .2s ease-in-out !important;
+    -webkit-transition: all .2s ease-in-out !important;
+    -ms-transition: all .2s ease-in-out !important;
+    -o-transition: all .2s ease-in-out !important;
+    transition: all .2s ease-in-out !important;
+  }
+
+   &:hover {
+     .card-header-image {
+       box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
+       transform:translateY(-10px);
+       -webkit-transform:translateY(-10px);
+       -ms-transform:translateY(-10px);
+       -moz-transform:translateY(-10px)
+     }
+   }
+}
 
 
 
-// Card download-button on hover effect
+
+
+
+// Card reveal on hover effect
 .card-hover {
 
   opacity: 1;
@@ -251,8 +284,4 @@
     }
   }
 
-}
-
-.text-red {
-  color: #f44242 !important;
 }

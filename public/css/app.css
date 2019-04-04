@@ -11190,6 +11190,7 @@ button.toast-close-button {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: overlay;
+  background-position: center center;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -11354,7 +11355,11 @@ button.toast-close-button {
   border-radius: 2rem !important;
 }
 
-.card-bounce {
+.text-red {
+  color: #f44242 !important;
+}
+
+.bounce {
   flex-direction: column;
   min-width: 0;
   display: flex;
@@ -11362,7 +11367,23 @@ button.toast-close-button {
   transition: all 0.2s ease-in-out !important;
 }
 
-.card-bounce:hover {
+.bounce:hover {
+  box-shadow: 0 12px 19px -7px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+}
+
+.card-header-bounce .card-header-image {
+  flex-direction: column;
+  min-width: 0;
+  display: flex;
+  background-clip: border-box;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.card-header-bounce:hover .card-header-image {
   box-shadow: 0 12px 19px -7px rgba(0, 0, 0, 0.3);
   transform: translateY(-10px);
   -webkit-transform: translateY(-10px);
@@ -11416,10 +11437,6 @@ button.toast-close-button {
 
 .card-hover:hover .card-img-top {
   opacity: 0.7;
-}
-
-.text-red {
-  color: #f44242 !important;
 }
 
 .bg-shadow {
@@ -12382,5 +12399,57 @@ input::-moz-focus-outer {
 
 .Caption {
   color: #ffac33;
+}
+
+.card-img-top-canvas {
+  border: 0;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-radius: 6px;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  width: 100%;
+}
+
+.card-img-top-canvas .card-header.card-header-image {
+  position: relative;
+  padding: 0;
+  z-index: 1;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: -30px;
+  border-radius: 6px;
+}
+
+.card-img-top-canvas .card-header {
+  border-radius: 3px;
+  padding: 1rem 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: -30px;
+  border: 0;
+  background: linear-gradient(60deg, #eee, #bdbdbd);
+}
+
+.card-img-top-canvas .card-header.card-header-image .colored-shadow {
+  -webkit-transform: scale(0.94);
+          transform: scale(0.94);
+  top: 12px;
+  -webkit-filter: blur(12px);
+          filter: blur(12px);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: -1;
+  transition: opacity 0.45s;
+  opacity: 0;
+}
+
+.card-img-top-canvas .card-header.card-header-image img {
+  width: 100%;
+  border-radius: 6px;
+  pointer-events: none;
+  box-shadow: 0 5px 15px -8px rgba(0, 0, 0, 0.24), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
