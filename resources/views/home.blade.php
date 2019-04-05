@@ -40,22 +40,71 @@
 
 
 
-
-
-  <section class="content-section">
+  <section class="what-we-do-section">
     <div class="container my-5 py-5">
+      <div class="row mb-5">
+        <div class="col text-center">
+          <h2 class="section-title mb-3"><span>Explore</span> what we offer</h2>
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+
+      <div class="row py-5 my-5">
+        <div class="col-lg-7 col-md-6 mb-4 mb-md-0">
+          <div class="about-img">
+            <img class="img-fluid" src="/images/download.png" alt="">
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-6 align-self-center text-md-right text-left">
+          <h2 class="mb-2">Download & Save</h2>
+          <p class="mb-4">
+            See a recipe you like? Simply download or save that recipe for later
+          </p>
+          <a class="btn btn-primary btn-rounded" href="#">Learn More</a>
+        </div>
+      </div>
+
+      <div class="row py-5 my-5">
+        <div class="col-lg-5 col-md-6 align-self-center text-left">
+          <h2 class="mb-2">Personalise your profile</h2>
+          <p class="mb-4">
+            Connect with others and share your recipes.
+          </p>
+          <a class="btn btn-primary btn-rounded" href="#">Learn More</a>
+        </div>
+        <div class="col-lg-7 col-md-6 mb-4 mb-md-0">
+          <div class="about-img">
+            <img class="img-fluid" src="/images/profile_data.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="content-section bg-faded">
+    <div class="container my-5 py-5">
+      <div class="row mb-5">
+        <div class="col text-center">
+          <h2 class="section-title mb-3"><span>Start now</span> with us</h2>
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+
       <div class="row justify-content-center">
         <div class="col-md-4">
           <div class="card card-img-top-canvas card-header-bounce bg-shadow">
             <div class="card-header card-header-image">
               <img src="/images/colourful_image1.jpeg" alt="">
-              <div class="colored-shadow" style="background-image: url(/images/colourful_image1.jpeg); opacity: 1;">
+              <div class="colored-shadow" style="background: #fcd27b; opacity: 0.5;">
               </div>
             </div>
             <div class="card-body">
               <h6 class="card-category text-primary">Lorem ipsum.</h6>
               <h4 class="card-title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Share a recipe with friends
               </h4>
             </div>
           </div>
@@ -65,13 +114,13 @@
           <div class="card card-img-top-canvas card-header-bounce bg-shadow">
             <div class="card-header card-header-image">
               <img src="/images/colourful_image2.jpeg" alt="">
-              <div class="colored-shadow" style="background-image: url(/images/colourful_image2.jpeg); opacity: 1;">
+              <div class="colored-shadow" style="background: #6ec7e0; opacity: 0.5;">
               </div>
             </div>
             <div class="card-body">
               <h6 class="card-category text-primary">Lorem ipsum.</h6>
               <h4 class="card-title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Favourite a recipe or save it for later
               </h4>
             </div>
           </div>
@@ -81,13 +130,13 @@
           <div class="card card-img-top-canvas card-header-bounce bg-shadow">
             <div class="card-header card-header-image">
               <img src="/images/colourful_image3.jpeg" alt="">
-              <div class="colored-shadow" style="background-image: url(/images/colourful_image3.jpeg); opacity: 1;">
+              <div class="colored-shadow" style="background: #fcd27b; opacity: 0.5;">
               </div>
             </div>
             <div class="card-body">
               <h6 class="card-category text-primary">Lorem ipsum.</h6>
               <h4 class="card-title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Like or download a recipe
               </h4>
             </div>
           </div>

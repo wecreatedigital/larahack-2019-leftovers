@@ -1,0 +1,44 @@
+.section-title {
+  span {
+    color: $primary !important;
+  }
+
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.5em;
+}
+
+.card-description, .description, .footer-big p {
+  color: #999;
+}
+
+.h4, h4 {
+  font-size: 1.125rem;
+  line-height: 1.5em;
+}
+
+.footer-big h4, .footer-big h5, .footer-brand, .info-title, .media .media-heading, .title {
+  font-weight: 700;
+}
+
+.h5, h5 {
+  font-size: 1.0625rem;
+  line-height: 1.55em;
+  margin-bottom: 15px;
+}
+
+.info p {
+  color: #999;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.info .info-title {
+  color: #3c4858;
+  margin: 1.75rem 0 .875rem;
+}

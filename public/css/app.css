@@ -11186,12 +11186,19 @@ button.toast-close-button {
 |--------------------------------------------------------------------------
 */
 
+body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+}
+
 .bg-image {
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: overlay;
   background-position: center center;
-  font-family: "Open Sans", sans-serif;
 }
 
 .square {
@@ -11331,14 +11338,6 @@ button.toast-close-button {
   width: 50px;
 }
 
-.section-title {
-  color: #000;
-}
-
-.section-title span {
-  color: #91ad41 !important;
-}
-
 .list-inline-item-padding:not(:last-child) {
   margin-right: 1rem !important;
 }
@@ -11476,6 +11475,60 @@ button.toast-close-button {
 
 .from-top {
   margin-top: -1.5rem !important;
+}
+
+.section-title {
+  color: #3c4858;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2.25rem;
+  line-height: 1.5em;
+}
+
+.section-title span {
+  color: #91ad41 !important;
+}
+
+.card-description,
+.description,
+.footer-big p {
+  color: #999;
+}
+
+.h4,
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.5em;
+}
+
+.footer-big h4,
+.footer-big h5,
+.footer-brand,
+.info-title,
+.media .media-heading,
+.title {
+  font-weight: 700;
+}
+
+.h5,
+h5 {
+  font-size: 1.0625rem;
+  line-height: 1.55em;
+  margin-bottom: 15px;
+}
+
+.info p {
+  color: #999;
+}
+
+p {
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.info .info-title {
+  color: #3c4858;
+  margin: 1.75rem 0 0.875rem;
 }
 
 /*

@@ -1,10 +1,19 @@
+body {
+  // font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+}
+
+
 .bg-image {
   // background-image: url(https://source.unsplash.com/1600x900/?recipes,food);
   background-repeat:no-repeat;
   background-size:cover;
   background-blend-mode: overlay;
   background-position: center center;
-  font-family: 'Open Sans', sans-serif;
   // height: 100vh;
   //
   // &:before {
@@ -149,14 +158,6 @@
   width: 50px;
 }
 
-.section-title {
-  span {
-    color: $primary !important;
-  }
-
-  color: #000;
-}
-
 .list-inline-item-padding:not(:last-child) {
   margin-right: 1rem !important;
 }
@@ -190,13 +191,13 @@
   -o-transition: all .2s ease-in-out !important;
   transition: all .2s ease-in-out !important;
 
-   &:hover {
-     box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
-     transform:translateY(-10px);
-     -webkit-transform:translateY(-10px);
-     -ms-transform:translateY(-10px);
-     -moz-transform:translateY(-10px)
-   }
+  &:hover {
+    box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
+    transform:translateY(-10px);
+    -webkit-transform:translateY(-10px);
+    -ms-transform:translateY(-10px);
+    -moz-transform:translateY(-10px)
+  }
 }
 
 // Bounce the Card Header Image only effect
@@ -214,15 +215,15 @@
     transition: all .2s ease-in-out !important;
   }
 
-   &:hover {
-     .card-header-image {
-       box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
-       transform:translateY(-10px);
-       -webkit-transform:translateY(-10px);
-       -ms-transform:translateY(-10px);
-       -moz-transform:translateY(-10px)
-     }
-   }
+  &:hover {
+    .card-header-image {
+      box-shadow:0 12px 19px -7px rgba(0,0,0,.3);
+      transform:translateY(-10px);
+      -webkit-transform:translateY(-10px);
+      -ms-transform:translateY(-10px);
+      -moz-transform:translateY(-10px)
+    }
+  }
 }
 
 
